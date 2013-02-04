@@ -1,0 +1,23 @@
+<h1> All Recipes </h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Category </th> 
+      <th> Chef </th>
+      <th> Method </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.title %></td>
+        <td><%= recipe.category %></td>
+        <td><%= recipe.chef %></td>
+        <td><%= link_to "Method for #{recipe.title}", recipe_path(recipe) %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+

@@ -1,0 +1,38 @@
+class RecipesController < ApplicationController
+  before_filter :signed_in_user, only: [:create, :destroy, :show, :new]
+  def index
+    @recipes = Recipe.all
+  end
+
+  def new
+    @recipe = Recipe.new
+  end
+
+  def create
+    debugger
+    @recipe = current_user.recipes.build(params[:recipe])
+    if @recipe.save
+      flash[:success] = "New recipe added"
+      redirect_to current_user
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    debugger
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
+    @ingredients = @recipe.ingredients.all
+    @steps = @recipe.steps.all
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def destroy
+  end
+end

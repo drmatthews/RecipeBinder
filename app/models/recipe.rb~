@@ -1,0 +1,7 @@
+class Recipe < ActiveRecord::Base
+  attr_accessible :category, :chef, :ingredients, :method, :title
+  belongs_to :user
+  has_many :ingredients
+  has_many :methods
+  validates :user_id, presence: true
+end
