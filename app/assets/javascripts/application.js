@@ -15,3 +15,4 @@
 //= require bootstrap
 //= require_tree .
 //= require jquery_nested_form
+//= require cocoon
