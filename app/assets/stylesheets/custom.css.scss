@@ -3,6 +3,10 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+/*$grayLight: #eaeaea;
+$gray: #eaeaea;
+$grayDarker: #eaeaea;
+$grayLighter: #eaeaea;*/
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -14,10 +18,6 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
-}
-
-body {
-  padding-top: 60px;
 }
 
 section {
