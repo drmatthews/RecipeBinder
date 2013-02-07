@@ -11,22 +11,16 @@
     <%= f.text_field :category %>
   </p>       	 
   <p>
-  	<a href="#" class="toggle" data-for=".drawer #ingredientsdrawer">Ingredients</a>
-    <section class="drawer", id="ingredientsdrawer">
-        <%= f.fields_for :ingredients do |ingredient_field| %>     
-          <%= render 'ingredients', :f => ingredient_field%>
-        <% end%>
-        <p><%= f.link_to_add "Add ingredient", :ingredients, class:"secondary btn" %></p>
-    </section>
+    <%= f.fields_for :ingredients do |ingredient_field| %>     
+      <%= render 'ingredients', :f => ingredient_field%>
+    <% end%>
+    <p><%= f.link_to_add "Add ingredient", :ingredients, class:"btn btn-warning" %></p>
   </p>  
   <p>
-  	<a href="#" class="toggle" data-for=".drawer #stepsdrawer">Method</a>
-    <section class="drawer", id="stepsdrawer">
-      <%= f.fields_for :steps do |step_field| %>
-        <%= render 'steps', :f => step_field%>
-      <% end %>
-      <p><%= f.link_to_add "Add method", :steps, class:"secondary btn" %></p>
-    </section>
+    <%= f.fields_for :steps do |step_field| %>
+      <%= render 'steps', :f => step_field%>
+        <% end %>
+      <p><%= f.link_to_add "Add method", :steps, class:"btn btn-warning" %></p>
   </p>  
-  <p><%= f.submit "Create my recipe", class: "primary btn" %></p>
+  <p><%= f.submit "Create my recipe", class: "btn btn-success" %></p>
 <% end %>
