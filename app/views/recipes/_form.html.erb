@@ -1,26 +1,58 @@
 <%= nested_form_for([@user,@recipe]) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Details</a></li>
+      <li><a href="#tab2" data-toggle="tab">Ingredients</a></li>
+      <li><a href="#tab3" data-toggle="tab">Method</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        <p>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
       
-    <%= f.label :chef %>
-    <%= f.text_field :chef %>
+          <%= f.label :chef %>
+          <%= f.text_field :chef %>
       
-    <%= f.label :category %>
-    <%= f.text_field :category %>
-  </p>       	 
-  <p>
-    <%= f.fields_for :ingredients do |ingredient_field| %>     
-      <%= render 'ingredients', :f => ingredient_field%>
-    <% end%>
-    <p><%= f.link_to_add "Add ingredient", :ingredients, class:"btn btn-warning" %></p>
-  </p>  
-  <p>
-    <%= f.fields_for :steps do |step_field| %>
-      <%= render 'steps', :f => step_field%>
-        <% end %>
-      <p><%= f.link_to_add "Add method", :steps, class:"btn btn-warning" %></p>
-  </p>  
+          <%= f.label :category %>
+          <%= f.text_field :category %>
+        </p>    
+      </div>
+      <div class="tab-pane" id="tab2">
+        <p>
+          <%= f.fields_for :ingredients do |ingredient_field| %>     
+            <%= render 'ingredients', :f => ingredient_field%>
+          <% end%>
+          <p><%= f.link_to_add "Add ingredient", :ingredients, class:"btn btn-warning" %></p>
+        </p>
+      </div>
+      <div class="tab-pane" id="tab3">
+        <p>
+          <%= f.fields_for :steps do |step_field| %>
+            <%= render 'steps', :f => step_field%>
+          <% end %>
+          <p><%= f.link_to_add "Add method", :steps, class:"btn btn-warning" %></p>
+        </p> 
+      </div>
+    </div>
+  </div> 	    
   <p><%= f.submit "Create my recipe", class: "btn btn-success" %></p>
 <% end %>
+
+<div class="container">
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
+      <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        <p>I'm in Section 1.</p>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <p>Howdy, I'm in Section 2.</p>
+      </div>
+    </div>
+  </div>
+</div>
