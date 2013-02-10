@@ -146,6 +146,21 @@ aside {
   margin-right: 10px;
 }
 
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -176,31 +191,77 @@ ul.ingredients {list-style-type:circle}
   @extend .control-group;
   @extend .error;
  }
-
-.new_recipe_top {
-    background-color: gold;
-    width: 900px;
-    height: 50px;
-}
-
-.new_recipe_middle {
-    background-color: black;
-    overflow: hidden;
-    width: 900px;
-    height: 0px;
-}
-
-.new_recipe_bottom {
-    background-color: gold;
-    width: 900px;
-    height: 50px;
-}
-
-.trigger {
+ 
+#closeLink {
+    color: #6FA5FD;
     display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
     position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 50px;
-    height: 50px;
+    right: 6px;
+    top: 4px;
+}
+
+.tabs {
+  position: relative;   
+  min-height: 200px; /* This part sucks */
+  clear: both;
+  margin: 25px 0;
+}
+.tab {
+  float: left;
+}
+.tab label {
+  background: #eee; 
+  padding: 3.5px; 
+  border: 1px solid #ccc;
+  border-bottom-style: solid white; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px; 
+}
+.tab [type=radio] {
+  display: none;   
+}
+.content {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none; 
+}
+[type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content {
+  z-index: 1;
+}
+
+#backgroundPopup{
+  display:none;
+  position:fixed;
+  _position:absolute; /* hack for internet explorer 6*/
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  background:#000000;
+  border:1px solid #cecece;
+  z-index:1;
+}
+
+#recipeInfo {
+  padding: 2ex;
+  position: absolute;
+  border: 2px double grey;
+  background: white;
 }

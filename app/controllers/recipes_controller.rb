@@ -29,6 +29,7 @@ class RecipesController < ApplicationController
     @recipe = @user.recipes.find(params[:id])
     @ingredients = @recipe.ingredients.all
     @steps = @recipe.steps.all
+    render :partial => 'recipe' if request .xhr?
   end
 
   def edit

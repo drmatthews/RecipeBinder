@@ -5,8 +5,5 @@
   <%= current_user.name %>
 </h1>
 <span>
-  <%= link_to "view my profile", user_recipes_path(current_user)%>
-</span>
-<span>
   <%= pluralize(current_user.recipes.count, "recipe") %>
 </span>

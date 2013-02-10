@@ -1,6 +1,6 @@
 <h2> Recipe details for <%= @recipe.title%></h2>
 
-<ul class = 'details'>
+<div class = 'details'>
   <div>
     <h4> Ingredients: </h4>
     <ul class = 'ingredients'>
@@ -16,9 +16,8 @@
           <li> <%= step.content %> </li>
       <%end%>
     </ol>
-  </ul>
+  </div>
 </div>
-
 <div class = 'container'>
   <p>
     <%= link_to 'Edit', edit_user_recipe_path(@user,@recipe), class:"btn btn-warning"%>

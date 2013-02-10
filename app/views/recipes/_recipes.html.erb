@@ -1,4 +1,4 @@
-<table class="table">
+<table id="recipes" class="table">
   <thead>
     <tr>
       <th> Name </th>
@@ -13,7 +13,7 @@
         <td><%= recipe.title %></td>
         <td><%= recipe.category %></td>
         <td><%= recipe.chef %></td>
-        <td><%= link_to "Method for #{recipe.title}", user_recipe_path(@user,recipe) %></td>
+        <td><%= link_to "Method for #{recipe.title}", user_recipe_path(@user,recipe)%></td>
       </tr>
     <%end%>
   </tbody>
