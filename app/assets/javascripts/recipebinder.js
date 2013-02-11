@@ -1,9 +1,9 @@
 RB = {
     setup: function() {
         // add invisible 'div' to end of page:
-        $('<div id="backgroundPopup"></div>').
-            hide().
-            appendTo($('body'));        
+        //$('<div id="backgroundPopup"></div>').
+        //    hide().
+        //    appendTo($('body'));        
         $('<div id="recipeInfo"></div>').
             hide().
             appendTo($('body'));
@@ -21,8 +21,7 @@ RB = {
     showRecipeInfo: function(data) {
         // center a floater 1/2 as wide and 1/4 as tall as screen
         var oneFourth = Math.ceil($(window).width() / 4);
-        $("#backgroundPopup").css({"opacity": "0.7"});
-        $("#backgroundPopup").fadeIn("slow");
+        //$("#backgroundPopup").css({"opacity": "0.7"}).fadeIn("slow");
         $('#recipeInfo').
             html(data).
             css({'left': oneFourth,  'width': 2*oneFourth, 'top': 250}).
