@@ -29,10 +29,15 @@ class RecipesController < ApplicationController
     @recipe = @user.recipes.find(params[:id])
     @ingredients = @recipe.ingredients.all
     @steps = @recipe.steps.all
-    render :partial => 'recipe' if request .xhr?
+    render :partial => 'editmodal' if request .xhr?
   end
 
   def edit
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
+    @ingredients = @recipe.ingredients.all
+    @steps = @recipe.steps.all
+    render :partial => 'editmodal' if request .xhr?
   end
 
   def destroy
@@ -41,6 +46,5 @@ class RecipesController < ApplicationController
     @recipe.destroy
     flash[:sucess] = "Recipe successfully deleted"
     redirect_to user_recipes_path
-    debugger
   end
 end
