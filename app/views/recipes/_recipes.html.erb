@@ -13,7 +13,7 @@
         <td><%= recipe.title %></td>
         <td><%= recipe.category %></td>
         <td><%= recipe.chef %></td>
-        <td><%= link_to "Method for #{recipe.title}", user_recipe_path(@user,recipe), data: {toggle: "modal", target: "#recipeModal"}, remote: true%></td>
+        <td><%= link_to "Method for #{recipe.title}", user_recipe_path(@user,recipe)%></td>
       </tr>
     <%end%>
   </tbody>
