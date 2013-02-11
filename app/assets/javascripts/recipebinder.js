@@ -1,4 +1,4 @@
-RB = {
+/*RB = {
     setup: function() {
         // add invisible 'div' to end of page:
         //$('<div id="backgroundPopup"></div>').
@@ -35,8 +35,8 @@ RB = {
         return(false);
     }
 }
-$(RB.setup);       // when document ready, run setup code
-/*RB= {
+$(RB.setup);       // when document ready, run setup code*/
+RB= {
     setup: function() {
 		$('#recipeModal').modal('hide');
         $('#recipes a').click(RB.getRecipeInfo);
@@ -64,4 +64,4 @@ $(RB.setup);       // when document ready, run setup code
     }
 	
 }
-$(RB.setup);*/
+$(RB.setup);
