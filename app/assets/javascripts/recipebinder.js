@@ -4,16 +4,16 @@ RB = {
         //$('<div id="backgroundPopup"></div>').
         //    hide().
         //    appendTo($('body'));        
-        //$('<div id="recipeInfo"></div>').
-        //    hide().
-        //    appendTo($('body'));
-        $('<div id="editrecipeInfo"></div>').
+        $('<div id="recipeInfo"></div>').
             hide().
-            appendTo($('body'));    
-        //$('#recipes a').click(RB.getRecipeInfo);
-        $('#recipes a').click(RB.putRecipeInfo);
+            appendTo($('body'));
+        //$('<div id="editrecipeInfo"></div>').
+        //    hide().
+        //    appendTo($('body'));    
+        $('#recipes a').click(RB.getRecipeInfo);
+        //$('#recipes a').click(RB.putRecipeInfo);
     },
-   /* getRecipeInfo: function() {
+    getRecipeInfo: function() {
         $.ajax({type: 'GET',
                 url: $(this).attr('href'),
                 timeout: 5000,
@@ -21,8 +21,8 @@ RB = {
                 error: function() { alert('Error!'); }
                });
         return(false);
-    },*/
-    putRecipeInfo: function() {
+    },
+    /*putRecipeInfo: function() {
         $.ajax({type: 'PUT',
                 url: $(this).attr('href'),
                 timeout: 5000,
@@ -30,8 +30,8 @@ RB = {
                 error: function() { alert('Error!'); }
                });
         return(false);
-    },    
-   /* showRecipeInfo: function(data) {
+    },*/    
+    showRecipeInfo: function(data) {
         // center a floater 1/2 as wide and 1/4 as tall as screen
         var oneFourth = Math.ceil($(window).width() / 4);
         //$("#backgroundPopup").css({"opacity": "0.7"}).fadeIn("slow");
@@ -41,10 +41,10 @@ RB = {
             fadeIn('slow').show();
         // make the Close link in the hidden element work
         $('#closeLink').click(RB.hideRecipeInfo);
-        $('#editLink').click(RB.editRecipeInfo);
+        //$('#editLink').click(RB.editRecipeInfo);
         return(false);  // prevent default link action
-    },*/
-    editRecipeInfo: function(data) {
+    },
+    /*editRecipeInfo: function(data) {
         // center a floater 1/2 as wide and 1/4 as tall as screen
         var oneFourth = Math.ceil($(window).width() / 4);
         //$("#backgroundPopup").css({"opacity": "0.7"}).fadeIn("slow");
@@ -56,15 +56,15 @@ RB = {
         // make the Close link in the hidden element work
         $('#closeLink').click(RB.hideEditRecipeInfo);
         return(false);  // prevent default link action
-    },    
-   /* hideRecipeInfo: function() {
+    },*/    
+    hideRecipeInfo: function() {
         $('#recipeInfo').hide(); 
         return(false);
-    },*/
-    hideEditRecipeInfo: function() {
+    }
+    /*hideEditRecipeInfo: function() {
         $('#editrecipeInfo').hide(); 
         return(false);        
-    }
+    }*/
 }
 $(RB.setup);       // when document ready, run setup code
 /*RB= {
