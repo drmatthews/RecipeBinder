@@ -10,6 +10,8 @@ gem 'jquery-rails', '2.0.2'
 gem "nested_form"
 gem 'simple_form'
 gem 'gumby-rails'
+gem 'compass-rails'
+gem 'zurb-foundation'
 
 group :development, :test do
   gem 'ruby-debug19'

@@ -1,18 +1,18 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Recipe Binder", root_path, id: "logo"%>
-      <nav>
-        <ul class="nav pull-right">
+<div class="fixed contain-to-grid">
+  <nav class="top-bar">
+    <ul>
+      <li class="name"><h1><%= link_to "Recipe Binder", root_path, id: "logo"%></h1></li>
+      <li class="toggle-topbar"><a href="#"></a></li>
+    </ul>
+    <Section>
+        <ul class="right">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
+            <li class="has-dropdown">
+              <a href="#">Account</a>
+              <ul class="dropdown">
                 <li><%= link_to "Recipes", current_user %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
@@ -20,13 +20,11 @@
                   <%= link_to "Sign out", signout_path, method: "delete" %>
                 </li>
               </ul>
-              </div>
             </li>
           <% else %>
             <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
         </ul>
-      </nav>
-    </div>
-  </div>
-</header> 
+    </section>
+  </nav>
+</div>
