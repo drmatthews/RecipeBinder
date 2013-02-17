@@ -1,7 +1,6 @@
-  <div class="topnav">
-  	<div id = "logo"><%= link_to "Recipe Binder", root_path, id: "logo"%></div>
     <Section>
-        <ul>
+    	<ul id="nav">
+    	  <li id="logo"><%= link_to "Recipe Binder", root_path%></li>		
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
@@ -22,4 +21,3 @@
           <% end %>
         </ul>
     </section>
-  </div>
