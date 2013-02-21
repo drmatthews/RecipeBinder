@@ -9,7 +9,9 @@
     <%= render 'layouts/shim' %>    
   </head>
   <body>
-    <%= render 'layouts/header' %>
+  	<section>
+  	  <%= render 'layouts/header' %>
+  	</section>
     <div id="container">
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: "alert-box #{key}") %>

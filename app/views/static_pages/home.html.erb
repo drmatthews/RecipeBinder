@@ -1,15 +1,13 @@
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
-      <section>
+    <div id="sidebar">
+      <p>
         <%= render 'shared/user_info' %>
-      </section>
-    </aside>
-    <div class="span8">
+      </p>
+    </div>
+    <div id="main">
       <h3><%=link_to "Current recipes", user_recipes_path(current_user)%></h3>
       <%= render 'shared/feed' %>
-    </div>
-  </div>  
+    </div> 
 <% else %>
   <div class="center hero-unit">
     <h1>Welcome to Recipe Binder</h1>

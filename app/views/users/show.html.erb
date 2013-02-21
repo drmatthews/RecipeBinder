@@ -1,6 +1,5 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
+  <div id="sidebar">
     <section>
       <h1>
         <%= gravatar_for @user %>
@@ -10,12 +9,11 @@
     <section>
        <%= link_to "New Recipe!", new_user_recipe_path(@user), class: "btn btn-large btn-primary" %>
      </section>
-  </aside>
-  <div class="span8">
+  </div>
+  <div id="main">
     <% if @user.recipes.any? %>
       <h3>Recipes (<%= @user.recipes.count %>)</h3>
       <%= render "recipes/recipes" %>
       <%= will_paginate @recipes %>
     <% end %>
   </div>
-</div>
