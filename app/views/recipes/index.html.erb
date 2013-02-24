@@ -1,19 +1,21 @@
 <% provide(:title, @user.name) %>
-  <div id="sidebar">
-    <section>
-      <h1>
+  <div class="col-1-4">
+    <div class="module">
+      <h3>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-       <%= link_to "New Recipe!", new_user_recipe_path(@user), class: "primary btn" %>
-     </section>
+      </h3>
+      <section>
+        <%= link_to "New Recipe!", new_user_recipe_path(@user), class: "primary btn" %>
+      </section>
+    </div>
   </div>
-  <div id="main">
-    <% if @user.recipes.any? %>
-      <h3><%= @user.recipes.count %> Recipes</h3>
-      <%= render "recipes/recipes" %>
-      <%= will_paginate @recipes %>
-    <% end %>
+  <div class="col-3-4">
+  	<div class="module">
+      <% if @user.recipes.any? %>
+        <h3><%= @user.recipes.count %> Recipes</h3>
+        <%= render "recipes/recipes" %>
+        <%= will_paginate @recipes %>
+      <% end %>
+    </div>
   </div>

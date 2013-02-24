@@ -1,5 +1,6 @@
+      <div class="page-wrap">
     	<div id="nav">
-    	  <li id="logo"><%= link_to "Recipe Binder", root_path%></li>		
+    	  <!--<li id="logo"><%= link_to "Recipe Binder", root_path%></li>-->		
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
@@ -19,3 +20,4 @@
             <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
         </div>
+      </div>

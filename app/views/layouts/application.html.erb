@@ -9,15 +9,20 @@
     <%= render 'layouts/shim' %>    
   </head>
   <body>
-  	<section>
+  	<header>
+  	  <div class=top-logo><a><%= link_to "Recipe Binder", root_path%></a></div>
+  	</header>
+  	<span>
   	  <%= render 'layouts/header' %>
-  	</section>
-    <div id="container">
+  	</span>
+  	<div class="page-wrap">
+      <div id="grid">
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: "alert-box #{key}") %>
         <% end %>
         <%= yield %>
         <%= render 'layouts/footer' %>
+      </div>
     </div>
   </body>
 </html>
