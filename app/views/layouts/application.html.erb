@@ -10,11 +10,9 @@
   </head>
   <body>
   	<header>
-  	  <div class=top-logo><a><%= link_to "Recipe Binder", root_path%></a></div>
-  	</header>
-  	<span>
+  	  <div class=top-logo><%= link_to "Recipe Binder", root_path%></div>
   	  <%= render 'layouts/header' %>
-  	</span>
+  	</header>
   	<div class="page-wrap">
       <div id="grid">
         <% flash.each do |key, value| %>
