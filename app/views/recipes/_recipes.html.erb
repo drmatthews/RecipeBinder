@@ -4,7 +4,7 @@
       <th> Name </th>
       <th> Category </th> 
       <th> Chef </th>
-      <th> Method </th>
+      <th>  </th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +13,7 @@
         <td><%= recipe.title %></td>
         <td><%= recipe.category %></td>
         <td><%= recipe.chef %></td>
-        <td><%= link_to "Method for #{recipe.title}", user_recipe_path(@user,recipe), {:id => 'recipeID'}%></td>
+        <td><%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%></td>
       </tr>
     <%end%>
   </tbody>

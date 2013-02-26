@@ -9,7 +9,7 @@ html, body {
   padding: 0;
   height: 100%;
   color: DarkSlateGrey;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Gotham Rounded A','Gotham Rounded B',"proxima-nova-soft",sans-serif;
   font-size: 10pt;
 }
 
@@ -20,7 +20,11 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
-
+a {
+  background: transparent;
+  color: green;
+  text-decoration: underline;
+}
 .top-logo {
   font-size: 30px;
   font-family: 'Gotham Rounded A','Gotham Rounded B',"proxima-nova-soft",sans-serif;
