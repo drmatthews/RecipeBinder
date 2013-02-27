@@ -1,4 +1,5 @@
 RecipeApp::Application.routes.draw do
+
   root to: 'static_pages#home'
   get "users/new"
 
@@ -7,7 +8,9 @@ RecipeApp::Application.routes.draw do
   resources :users do
     resources :recipes
   end
-
+  
+  resources :password_resets
+  
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

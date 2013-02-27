@@ -14,7 +14,7 @@
   	  <%= render 'layouts/header' %>
   	</header>
   	<div class="page-wrap">
-      <div id="grid">
+      <div class="grid">
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: "alert-box #{key}") %>
         <% end %>

@@ -12,7 +12,12 @@ html, body {
   font-family: 'Gotham Rounded A','Gotham Rounded B',"proxima-nova-soft",sans-serif;
   font-size: 10pt;
 }
-
+h1 {
+  font-size: 30px;
+  color: white;
+  margin-top: 0px;
+  margin-bottom: 3px;
+} 
 html { 
   background: url('wood_1_@2X.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -25,6 +30,7 @@ a {
   color: green;
   text-decoration: underline;
 }
+
 .top-logo {
   font-size: 30px;
   font-family: 'Gotham Rounded A','Gotham Rounded B',"proxima-nova-soft",sans-serif;
@@ -81,16 +87,18 @@ a {
 }
 
 $pad: 20px;
-$padtop: 60px;
+$padtop: 40px;
 .page-wrap {
     width: 90%;
-    margin: 0px auto;
-    background-color: #FFF;
+    height: 100%;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: #EBF5CC;
 }
 .grid {
-  background: white;
   margin: 0 0 $pad 0;
-  
   &:after {
     /* Or @extend clearfix */
     content: "";
@@ -103,9 +111,13 @@ $padtop: 60px;
   float: left;
   padding-top: $padtop;
   padding-right: $pad;
+  padding-left: $pad;
   .grid &:last-of-type {
-    padding-right: 0;
+    padding-right: $pad;
   }
+}
+.col-1-0 {
+  width: 100%;
 }
 .col-3-4 {
   width: 75%;
@@ -124,6 +136,43 @@ $padtop: 60px;
 }
 .col-1-8 {
   width: 12.5%;
+}
+
+a.btn, .btn {
+  text-decoration: none;
+  color: white;
+  padding: 0.5em 1em;
+  background: #bfd255; /* Old browsers */
+  background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 50%, #72aa00 51%, #9ecb2d 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bfd255), color-stop(50%,#8eb92a), color-stop(51%,#72aa00), color-stop(100%,#9ecb2d)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 ); /* IE6-9 */
+  zoom: 1;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -box-shadow: 0 1px 3px  rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+}
+a.btn, .btn :hover {
+  background: #85FF85; /* old browsers */
+  background: -moz-linear-gradient(top, #85FF85 0%, #5DB25D 100%); /* firefox */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#85FF85), color-stop(100%,#5DB25D)); /* webkit */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8e6ff', endColorstr='#8da8d7',GradientType=0 ); /* ie */
+}
+
+a.btn-signup{
+  font: bold 2em/2.5em sans-serif;
+}
+
+.btn-newuser, .btn-signin {
+  background: #33CC33;
+  font: bold 1em/1.5em sans-serif;
 }
 
 .module {
@@ -165,6 +214,59 @@ $padtop: 60px;
     left: 12px;
     top: 12px;;
 }
+.module-hometitle {
+  text-align: center;
+  background-color: #A3C266;
+  p {
+    padding-top: 135px;
+  }
+}
+.module-signup {
+  background-color: #A3C266;
+}
+.module-signin {
+  background-color: #A3C266;
+}
+
+.formcontainer {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    position: relative;
+    width: 50%;
+}
+div.single-field {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    position: relative;
+}
+div.curFocus {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #FDECB2;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+}
+label {
+    display: block;
+    float: left;
+    font-size: 1.2em;
+    padding-right: 20px;
+    width: 100px;
+}
+
 /* Opt-in outside padding */
 .grid-pad {
   padding: $pad 0 $pad $pad;
@@ -175,7 +277,7 @@ $padtop: 60px;
 
 #nav {
     position: absolute;
-    width: 90%;
+    width: 100%;
     list-style: none outside none;
     margin: 0 0 1em;
     padding: 0px;
@@ -258,7 +360,6 @@ $padtop: 60px;
   }
 }
 
-
 .tabs {
   position: relative;
   min-height: 200px; /* This part sucks */
@@ -308,7 +409,7 @@ footer {
   width: 90%;
   bottom: 0;
   margin-top: 5px;
-  height: 60px;
+  height: 0px;
   padding-top: 5px;
   border-top: 1px solid #3D5C5C;
   color: #006600;
@@ -321,10 +422,12 @@ footer {
   }
   small {
     float: left;
+    margin-left: 10px;
   }
   ul {
     float: right;
     list-style: none;
+    margin-right: 10px;
     li {
       float: left;
       margin-left: 10px;
@@ -332,11 +435,24 @@ footer {
   }
 }
 
-#signup li {
-  list-style: none outside none;
-  width: 100%;
-  padding: 1px;
-  margin-bottom: 10px;
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid #669999;
+    &:last-child {
+      border-bottom: 1px solid #669999;
+    }
+  }
 }
 
 /*.debug_dump {

@@ -1,41 +1,22 @@
 <div class="container`">
   <h2> Recipe card for <%= @recipe.title%></h2>	
-  <div class="tabs">
-    
-    <div class="tab">
-       <input type="radio" id="tab-1" name="tab-group-1" checked>
-       <label for="tab-1">Ingredients</label>
-       
-       <div class="content">
-          <div>
-             <ul class = 'ingredients'>
-               <% @ingredients.each do |ingredient| %>
-                <li> <%= ingredient.content %> </li>
-              <%end%>
-             </ul>
-          </div>
-        </div> 
-     </div>
-  </div> 
-  <div class="tabs">
-    <div class="tab">
-       <input type="radio" id="tab-2" name="tab-group-2" checked>
-       <label for="tab-2">Method</label>
-       
-       <div class="content">
-         <div>
-           <ol>
-             <% @steps.each do |step| %>
-               <li> <%= step.content %> </li>
-             <%end%>
-           </ol>
-         </div>
-       </div> 
-    </div>
+  <div>
+  	<h2>Ingredients</h2>
+    <ul class = 'ingredients'>
+      <% @ingredients.each do |ingredient| %>
+        <li> <%= ingredient.content %> </li>
+      <%end%>
+    </ul>
   </div>
   <div>
-    <p>
-      <%= link_to 'Edit', edit_user_recipe_path(@user,@recipe), {:id => "editLink"}%>
-    </p>
+  	<h2>Method</h2>
+    <ol>
+      <% @steps.each do |step| %>
+        <li> <%= step.content %> </li>
+      <%end%>
+    </ol>
   </div>
+  <p>
+    <%= link_to 'Edit', edit_user_recipe_path(@user,@recipe), {:id => "editLink"}%>
+  </p>
 </div>  

@@ -27,12 +27,12 @@ RB = {
 			'top': 250,
 			modal: true
 			}).dialog('open');
-	$('#editLink').button().click(RB.putRecipeInfo);
+	    $('#editLink').button().click(RB.putRecipeInfo);
         return(false);  // prevent default link action
     },
     putRecipeInfo: function() {
-        $.ajax({type: 'PUT',
-                url: $('#recipeInfo').attr('href'),
+        $.ajax({type: 'GET',
+                url: $('#editLink').attr('href'),
                 timeout: 5000,
                 success: RB.editRecipeInfo,
                 error: function() { alert('Error!'); }
@@ -43,7 +43,7 @@ RB = {
         // center a floater 1/2 as wide and 1/4 as tall as screen
         var oneFourth = Math.ceil($(window).width() / 4);
         $('#recipeInfo').dialog('close');
-        $('#editRecipeInfo').html(data).dialog({
+        $('#editrecipeInfo').html(data).dialog({
        		autoOpen: false,
        		show: 'slow',
 			'left': oneFourth,  
@@ -51,7 +51,11 @@ RB = {
 			'top': 250,
 			modal: true
 			}).dialog('open');
-        //$('#closeLink').click(RB.hideEditRecipeInfo);
+        $('#updateRecipe').button();
+        $('#updateRecipe').submit(function() {
+          alert('Handler for .submit() called.');
+          return false;
+         });
         return(false); // prevent default link action
     }, 
     hideRecipeInfo: function() {

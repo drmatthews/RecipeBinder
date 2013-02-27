@@ -1,39 +1,38 @@
 <h2> Edit recipe: <%= @recipe.title%></h2>
-  <div id="editrecipe" class="row">
-    <div class="span8 offset2">
-  	  <div>
-  	  	<h4> Details </h4>
-        <%= nested_form_for([@user,@recipe], :method => :put) do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
-            <p>
+  <div id="formcontainer">
+    <h4> Details </h4>
+      <%= nested_form_for([@user,@recipe], :method => :put) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+          <p>
+            <div class="single-field">
               <%= f.label :title %>
               <%= f.text_field :title %>
-      
+            </div>
+      		<div class="single-field">
               <%= f.label :chef %>
               <%= f.text_field :chef %>
-      
+            </div>
+            <div class="single-field">
               <%= f.label :category %>
               <%= f.text_field :category %>
-            </p>
-      </div> 
-      <div>
-      	<h4> Ingredients </h4>         
-        <p>
-          <%= f.fields_for :ingredients do |ingredient_field| %>     
+            </div>
+          </p>
+    <h4> Ingredients </h4>         
+      <p>
+        <%= f.fields_for :ingredients do |ingredient_field| %>
+          <div class="single-field">     
             <%= ingredient_field.text_field :content%>
-          <% end%>
-        </p>
-      </div>
-      <div>
-      	<h4> Method </h4>
-        <p>
-          <%= f.fields_for :steps do |step_field| %>
+          </div>
+        <% end%>
+      </p>
+    <h4> Method </h4>
+      <p>
+        <%= f.fields_for :steps do |step_field| %>
+          <div class="single-field">
             <%= step_field.text_area :content, :rows => 3 %>
-          <% end %>
-        </p> 	    
-        <p><%= f.submit "Update my recipe", class: "btn btn-success" %></p>
-      <% end %>
-      <%= link_to 'x','',{:id => 'closeLink'}%>
-      </div>
-    </div>
-  </div>
+          </div>
+        <% end %>
+      </p> 	    
+      <p><%= f.submit "Update my recipe", id: "updateRecipe" %></p>
+    <% end %>
+</div>

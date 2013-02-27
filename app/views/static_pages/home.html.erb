@@ -13,14 +13,16 @@
       </div>
    </section> 
 <% else %>
-  <div class="center hero-unit">
-    <h1>Welcome to Recipe Binder</h1>
-
-    <h2>
-      This is the home page for Recipe Binder.
-    </h2>
-
-    <%= link_to "Sign up now!", signup_path, 
-                                class: "btn btn-large btn-primary" %>
-  </div>
+  	<div class="col-1-2">
+  		<div class="module module-hometitle">
+  		  <h1>New user?</h1>
+          <h1>Welcome to Recipe Binder!</h1>
+          <p>
+            <%= link_to "Sign up now!", signup_path, {:class => 'btn btn-signup'}%>
+          </p>
+       </div>
+     </div>
+  	 <div class="col-1-2">
+       <%= render 'sessions/new'%>
+     </div>     
 <% end %> 
