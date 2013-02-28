@@ -89,7 +89,7 @@ a {
 $pad: 20px;
 $padtop: 40px;
 .page-wrap {
-    width: 90%;
+    width: 80%;
     height: 100%;
     margin-bottom: 20px;
     margin-left: auto;
@@ -109,7 +109,7 @@ $padtop: 40px;
 
 [class*='col-'] {
   float: left;
-  padding-top: $padtop;
+  padding-top: $pad;
   padding-right: $pad;
   padding-left: $pad;
   .grid &:last-of-type {
@@ -137,6 +137,27 @@ $padtop: 40px;
 .col-1-8 {
   width: 12.5%;
 }
+
+.alert-box {
+  position: relative;
+  margin: 0 0;
+  width: 300px;
+  height: 50px;
+  padding-top: 15px;
+  text-align: center;
+}
+.error { 
+  background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4; 
+  }
+.notice { 
+  background:#FFF6BF;color:#514721;border-color:#FFD324; 
+  }
+.success { 
+  background:#339933;color:#000;border-color:#1F5C1F; 
+  }
+.alert { 
+  background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4; 
+  }
 
 a.btn, .btn {
   text-decoration: none;
@@ -277,7 +298,7 @@ label {
 
 #nav {
     position: absolute;
-    width: 100%;
+    width: 80%;
     list-style: none outside none;
     margin: 0 0 1em;
     padding: 0px;
@@ -406,7 +427,7 @@ label {
 
 footer {
   position: absolute;
-  width: 90%;
+  width: 80%;
   bottom: 0;
   margin-top: 5px;
   height: 0px;
@@ -454,7 +475,6 @@ footer {
     }
   }
 }
-
 /*.debug_dump {
   clear: both;
   float: left;

@@ -11,16 +11,18 @@
   <body>
   	<header>
   	  <div class=top-logo><%= link_to "Recipe Binder", root_path%></div>
-  	  <%= render 'layouts/header' %>
   	</header>
   	<div class="page-wrap">
-      <div class="grid">
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "alert-box #{key}") %>
-        <% end %>
+      <%= render 'layouts/header' %>	
+  	  <div class="grid">
+  	  	<div class="col-1-0">
+  	    	<% flash.each do |key, value| %>
+          		<%= content_tag(:div, value, class: "alert-box #{key}") %>
+        	<% end %>
+        </div>	
         <%= yield %>
-        <%= render 'layouts/footer' %>
       </div>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
