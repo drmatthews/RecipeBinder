@@ -40,6 +40,14 @@ class RecipesController < ApplicationController
     render :partial => 'editmodal' if request .xhr?
   end
 
+  def update
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
+    @recipe.update_attributes!(params[:recipe])
+    flash[:success] = "Recipe successfully updated"
+    redirect_to user_recipes_path
+  end
+
   def destroy
     @user = User.find(params[:user_id])
     @recipe = @user.recipes.find(params[:id])
