@@ -12,9 +12,9 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
-  has_many :recipes, dependent: :destroy
-  has_many :ingredients, :through=> :recipes
-  has_many :steps, :through=> :recipes
+  has_many :recipes, :dependent => :destroy
+  has_many :ingredients, :through=> :recipes, :dependent => :destroy
+  has_many :steps, :through=> :recipes, :dependent => :destroy
   before_save { |user| user.email = email.downcase }
   before_create {create_remember_token(:remember_token)} 
 

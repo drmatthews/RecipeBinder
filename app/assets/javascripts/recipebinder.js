@@ -21,13 +21,14 @@ RB = {
        var oneFourth = Math.ceil($(window).width() / 4);
        $('#recipeInfo').html(data).dialog({
        		autoOpen: false,
-       		show: 'slow',
+       		show: 'blind',
+       		hide: 'blind',
 			'left': oneFourth,  
 			'width': 2*oneFourth,
 			'top': 250,
 			modal: true
 			}).dialog('open');
-	    $('#editLink').button().click(RB.putRecipeInfo);
+	   $('#editLink').button().click(RB.putRecipeInfo);
         return(false);  // prevent default link action
     },
     putRecipeInfo: function() {
@@ -45,12 +46,15 @@ RB = {
         $('#recipeInfo').dialog('close');
         $('#editrecipeInfo').html(data).dialog({
        		autoOpen: false,
-       		show: 'slow',
+       		show: 'blind',
+       		hide: 'blind',
 			'left': oneFourth,  
 			'width': 2*oneFourth,
 			'top': 250,
 			modal: true
 			}).dialog('open');
+		$('#addIngredient').button();
+		$('#addStep').button();	
         $('#updateRecipe').button();
         $('#updateRecipe').submit(function() {
           alert('Handler for .submit() called.');
@@ -64,38 +68,3 @@ RB = {
     }
 }
 $(RB.setup);       // when document ready, run setup code
-
-/*RB = {
-    setup: function() {
-        $('<div id="editrecipeInfo"></div>').
-            hide().
-            appendTo($('body'));
-        $('#recipes a').click(RB.putRecipeInfo);
-    },
-    putRecipeInfo: function() {
-        $.ajax({type: 'PUT',
-                url: $(this).attr('href'),
-                timeout: 5000,
-                success: RB.editRecipeInfo,
-                error: function() { alert('Error!'); }
-               });
-        return(false);
-    },
-    editRecipeInfo: function(data) {
-        // center a floater 1/2 as wide and 1/4 as tall as screen
-        var oneFourth = Math.ceil($(window).width() / 4);
-        //$("#backgroundPopup").css({"opacity": "0.7"}).fadeIn("slow");
-        //$('#recipeInfo').fadeOut('slow');
-        $('#editrecipeInfo').
-            html(data).
-            css({'left': oneFourth, 'width': 2*oneFourth, 'top': 250}).
-            fadeIn('slow').show();
-        // make the Close link in the hidden element work
-        $('#closeLink').click(RB.hideEditRecipeInfo);
-        return(false); // prevent default link action
-    },
-    hideEditRecipeInfo: function() {
-        $('#editrecipeInfo').hide();
-        return(false);
-    }
-}*/

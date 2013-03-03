@@ -1,21 +1,14 @@
-<table id="recipes" class="table">
-  <thead>
-    <tr>
-      <th> Name </th>
-      <th> Category </th> 
-      <th> Chef </th>
-      <th>  </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.category %></td>
-        <td><%= recipe.chef %></td>
-        <td><%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%></td>
-      </tr>
-    <%end%>
-  </tbody>
-</table>
-
+<div id="recipes">
+  <% @recipes.each do |recipe| %>
+    <div class="recipe">
+      <div class="image-placeholder">
+        <%= image_tag recipe.image_url(:thumb) if recipe.image? %>
+        <div class="title"><%= recipe.title %></div>
+        <div class="actions">
+      	  <%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>

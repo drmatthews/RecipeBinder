@@ -19,19 +19,17 @@
           </p>
     <h4> Ingredients </h4>         
       <p>
-        <%= f.fields_for :ingredients do |ingredient_field| %>
-          <div class="single-field">     
-            <%= ingredient_field.text_field :content%>
-          </div>
+        <%= f.fields_for :ingredients do |ingredient_field| %>  
+			<%= render 'ingredients', :f => ingredient_field%>
         <% end%>
+        <%= f.link_to_add "Add ingredient", :ingredients, id:"addIngredient" %>
       </p>
     <h4> Method </h4>
       <p>
         <%= f.fields_for :steps do |step_field| %>
-          <div class="single-field">
-            <%= step_field.text_area :content, :rows => 3 %>
-          </div>
+			<%= render 'steps', :f => step_field%>
         <% end %>
+        <%= f.link_to_add "Add ingredient", :steps, id:"addStep" %>
       </p> 	    
       <p><%= f.submit "Update my recipe", id: "updateRecipe" %></p>
     <% end %>

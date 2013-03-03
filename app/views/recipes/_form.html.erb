@@ -32,6 +32,17 @@
             <% end %>
             <p><%= f.link_to_add "Add method", :steps, class:"btn btn-warning" %></p>
           </div>
+        </p>
+        <p>
+          <div class="single-field">	
+            <%= f.file_field :image %>
+          </div>
+        </p>
+        <p>
+          <div class="single-field">
+            <%= f.label :remote_image_url, "or image URL" %><br />
+            <%= f.text_field :remote_image_url %>
+          </div>
         </p> 
   </div> 	
   <div class="single-field">    

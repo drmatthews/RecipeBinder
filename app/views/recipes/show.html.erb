@@ -1,27 +1,26 @@
-<h2> Recipe details for <%= @recipe.title%></h2>
-
-<div class = 'details'>
+<div class="col-1-0`">
+  <h2> Recipe card for <%= @recipe.title%></h2>	
   <div>
-    <h4> Ingredients: </h4>
-    <ul class = 'ingredients'>
+  	<h2>Ingredients</h2>
+    <ul>
       <% @ingredients.each do |ingredient| %>
-          <li> <%= ingredient.content %> </li>
+        <li> 
+        	<%= ingredient.content%>
+        </li>
       <%end%>
     </ul>
   </div>
   <div>
-    <h4> Method: </h4>
+  	<h2>Method</h2>
     <ol>
       <% @steps.each do |step| %>
-          <li> <%= step.content %> </li>
+        <li> 
+        	<%= step.content%>
+        </li>
       <%end%>
     </ol>
   </div>
-</div>
-<div class = 'container'>
   <p>
-    <%= link_to 'Edit', edit_user_recipe_path(@user,@recipe), class:"btn btn-warning"%>
-    <%= button_to 'Delete', user_recipe_path(@user,@recipe), class:"btn btn-danger", :method => :delete, :confirm => 'Are you sure?'%>
+    <%= link_to 'Edit', edit_user_recipe_path(@user,@recipe), {:id => "editLink"}%>
   </p>
-  <%= link_to 'Back to recipe list', user_recipes_path(current_user)%>
-</div>
+</div>  

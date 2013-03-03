@@ -1,10 +1,12 @@
-<div class="container`">
+<div class="col-1-0`">
   <h2> Recipe card for <%= @recipe.title%></h2>	
   <div>
   	<h2>Ingredients</h2>
-    <ul class = 'ingredients'>
+    <ul>
       <% @ingredients.each do |ingredient| %>
-        <li> <%= ingredient.content %> </li>
+        <li> 
+        	<%= ingredient.content%>
+        </li>
       <%end%>
     </ul>
   </div>
@@ -12,7 +14,9 @@
   	<h2>Method</h2>
     <ol>
       <% @steps.each do |step| %>
-        <li> <%= step.content %> </li>
+        <li> 
+        	<%= step.content%>
+        </li>
       <%end%>
     </ol>
   </div>

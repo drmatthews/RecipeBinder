@@ -12,6 +12,9 @@ gem 'simple_form'
 gem 'gumby-rails'
 gem 'compass-rails'
 gem 'zurb-foundation'
+gem 'formtastic'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
   gem 'ruby-debug19'

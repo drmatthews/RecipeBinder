@@ -474,6 +474,31 @@ footer {
     }
   }
 }
+
+.recipe {
+  border: solid 1px #CCC;
+  padding: 10px 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.recipe .title {
+  padding-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.recipe .image_placeholder {
+  width: 200px;
+  height: 150px;
+  background-color: #B6B6B6;
+}
+
+.recipe .actions {
+  font-size: 10px;
+  text-align: center;
+  color: #777;
+}
 /*.debug_dump {
   clear: both;
   float: left;
