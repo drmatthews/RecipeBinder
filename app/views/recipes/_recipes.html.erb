@@ -1,6 +1,6 @@
 <div id="recipes">
   <% @recipes.each do |recipe| %>
-    <div class="recipe">
+    <div class="thumbnail">
       <div class="image-placeholder">
         <%= image_tag recipe.image_url(:thumb) if recipe.image? %>
         <div class="title"><%= recipe.title %></div>

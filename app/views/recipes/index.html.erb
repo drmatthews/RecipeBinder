@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="col-3-4">
-  	<div class="module">
+    <div class="module">
       <% if @user.recipes.any? %>
         <h3><%= @user.recipes.count %> Recipes</h3>
         <%= render "recipes/recipes" %>
