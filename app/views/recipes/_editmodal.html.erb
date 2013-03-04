@@ -17,20 +17,33 @@
               <%= f.text_field :category %>
             </div>
           </p>
-    <h4> Ingredients </h4>         
-      <p>
-        <%= f.fields_for :ingredients do |ingredient_field| %>  
+      <h4> Ingredients </h4>         
+        <p>
+          <%= f.fields_for :ingredients do |ingredient_field| %>  
 			<%= render 'ingredients', :f => ingredient_field%>
-        <% end%>
-        <%= f.link_to_add "Add ingredient", :ingredients, id:"addIngredient" %>
-      </p>
-    <h4> Method </h4>
-      <p>
-        <%= f.fields_for :steps do |step_field| %>
+          <% end%>
+          <%= f.link_to_add "Add ingredient", :ingredients, id:"addIngredient" %>
+        </p>
+      <h4> Method </h4>
+        <p>
+          <%= f.fields_for :steps do |step_field| %>
 			<%= render 'steps', :f => step_field%>
-        <% end %>
-        <%= f.link_to_add "Add ingredient", :steps, id:"addStep" %>
-      </p> 	    
-      <p><%= f.submit "Update my recipe", id: "updateRecipe" %></p>
-    <% end %>
+          <% end %>
+          <%= f.link_to_add "Add ingredient", :steps, id:"addStep" %>
+        </p>
+      <h4> Image </h4>        
+        <p>
+          <div class="single-field">	
+            <%= f.file_field :image %>
+          </div>
+        </p>
+        <p>
+          <div class="single-field">
+            <%= f.label :remote_image_url, "or image URL" %><br />
+            <%= f.text_field :remote_image_url %>
+          </div>
+        </p> 
+ 	    
+        <p><%= f.submit "Update my recipe", id: "updateRecipe" %></p>
+      <% end %>
 </div>

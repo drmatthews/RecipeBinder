@@ -3,7 +3,7 @@ RB = {
         $('<div id="recipeInfo" title="Recipe Info"></div>').
             hide().
             appendTo($('body'));   
-        $('#recipes a').button().click(RB.getRecipeInfo);
+        $('#recipes #recipeID').button().click(RB.getRecipeInfo);
         $('<div id="editrecipeInfo"></div>').
             hide().
             appendTo($('body'));

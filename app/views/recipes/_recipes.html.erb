@@ -1,14 +1,12 @@
 <div id="recipes">
   <% @recipes.each do |recipe| %>
     <div class="thumbnail">
-      <div class="image-placeholder">
         <%= image_tag recipe.image_url(:thumb) if recipe.image? %>
         <div class="title"><%= recipe.title %></div>
         <div class="actions">
       	  <%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%>
+      	  <%= link_to "remove", user_recipe_path(@user,recipe), :id => 'removeRecipe',:confirm => 'Are you sure?', :method => :delete %>
         </div>
-      </div>
     </div>
   <% end %>
-  <div class="clear"></div>
 </div>

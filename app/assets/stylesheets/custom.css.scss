@@ -220,10 +220,10 @@ a.btn-signup{
 }
 
 .thumbnail {
+  background-color: #eee;
   float: left;
-  width: 200px;
-  height: 200px;
   border: solid 1px #CCC;
+  width: 200px;
   padding: 10px 10px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -424,13 +424,10 @@ label {
 /* footer */
 
 footer {
-  position: absolute;
-  width: 80%;
-  bottom: 0;
-  margin-top: 5px;
-  height: 0px;
+  margin-top: 0px;
   padding-top: 5px;
   border-top: 1px solid #3D5C5C;
+  background-color: #EBF5CC;
   color: #006600;
   a {
     color: #006600;
