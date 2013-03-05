@@ -1,12 +1,18 @@
-    	<div id="nav">
-    	  <!--<li id="logo"><%= link_to "Recipe Binder", root_path%></li>-->		
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Recipe Binder", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
-            <li>
-              <a href="#">Account</a>
-              <ul>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
                 <li><%= link_to "Recipes", user_recipes_path(current_user) %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
@@ -18,4 +24,8 @@
           <% else %>
             <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
-        </div>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
