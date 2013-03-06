@@ -178,9 +178,15 @@ input {
 }
 
 .thumbnail {
+  position: relative;
   width: 150px;
-  height: 200px;
-  padding: 20px;
+  height: 220px;
+  padding: 5px;
+}
+.actions {
+  position: absolute;
+  bottom: 0;
+  float: left;
 }
 /* miscellaneous */
 

@@ -1,17 +1,53 @@
-<div id="recipes">
-  <ul class="thumbnails">
-    <% @recipes.each do |recipe| %>
-      <li class="span4">
-        <div class="thumbnail">
-          <%= image_tag recipe.image_url(:thumb) if recipe.image? %>
-          <h4><%= recipe.title %></h4>
-          <p>
-       <%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%>
-       <%= link_to "remove", user_recipe_path(@user,recipe), :id => 'removeRecipe',:confirm => 'Are you sure?', :method => :delete %>
-          </p>
-        </div>
-      </li>
-    <% end %>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Gallery</a></li>
+    <li><a href="#tab2" data-toggle="tab">List</a></li>
   </ul>
-  <%= will_paginate @recipes %>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p>
+      	<div id="recipes">
+      	  <h3><%= @recipes.count %> Recipes</h3>
+  		  <%= @recipes.each_slice(6) do |slice| %>
+    	    <ul class="thumbnails">
+              <% slice.each do |recipe| %>
+        		<li class="span2">
+          			<div class="thumbnail">
+          				<% if recipe.image?%>
+            			  <%= image_tag recipe.image_url(:thumb) %>
+            			<% else %>
+            			  <%= image_tag('blank.png') %>
+            			<% end%>
+            			<h4><%= recipe.title %></h4>
+            			<p>
+              				<div class="actions">
+       		    				<%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%> |
+       		    				<%= link_to "remove", user_recipe_path(@user,recipe), :id => 'removeRecipe',:confirm => 'Are you sure?', :method => :delete %>
+       		  				</div>
+            			</p>
+          			</div>
+        		</li>
+      		  <% end %>
+    		</ul>
+  	      <% end %>
+  		  <%= will_paginate @recipes %>
+		</div>
+      </p>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p>
+      	<div id="recipes">
+      	  <h3><%= @recipes.count %> Recipes</h3>
+          <% @recipes.each do |recipe| %>
+            <li>
+           	  <h4><%= recipe.title %></h4>
+       		  <%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%> |
+       		  <%= link_to "remove", user_recipe_path(@user,recipe), :id => 'removeRecipe',:confirm => 'Are you sure?', :method => :delete %>
+            </li>
+      	  <% end %>
+  		  <%= will_paginate @recipes %>
+		</div>
+      </p>
+    </div>
+  </div>
 </div>

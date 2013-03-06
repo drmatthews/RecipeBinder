@@ -1,51 +1,39 @@
-<%= nested_form_for([@user,@recipe]) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="formcontainer"> <!-- Only required for left/right tabs -->
-        <p>
-          <div class="single-field">	
+<div class="container">
+  <div class="row">
+    <div class="span6 offset5">
+      <%= nested_form_for([@user,@recipe]) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+          <p>	
             <%= f.label :title %>
             <%= f.text_field :title %>
-          </div>
       
-          <div class="single-field">
             <%= f.label :chef %>
             <%= f.text_field :chef %>
-          </div>
       
-      	  <div class="single-field">
             <%= f.label :category %>
             <%= f.text_field :category %>
-          </div>
-        </p>    
-        <p>
-          <div class="single-field">
+          </p>    
+          <p>
             <%= f.fields_for :ingredients do |ingredient_field| %>     
               <%= render 'ingredients', :f => ingredient_field%>
             <% end%>
             <p><%= f.link_to_add "Add ingredient", :ingredients, class:"btn btn-warning" %></p>
-          </div>
-        </p>
-        <p>
-          <div class="single-field">
+          </p>
+          <p>
             <%= f.fields_for :steps do |step_field| %>
               <%= render 'steps', :f => step_field%>
             <% end %>
             <p><%= f.link_to_add "Add method", :steps, class:"btn btn-warning" %></p>
-          </div>
-        </p>
-        <p>
-          <div class="single-field">	
+          </p>
+          <p>	
             <%= f.file_field :image %>
-          </div>
-        </p>
-        <p>
-          <div class="single-field">
+          </p>
+          <p>
             <%= f.label :remote_image_url, "or image URL" %><br />
             <%= f.text_field :remote_image_url %>
-          </div>
-        </p> 
-  </div> 	
-  <div class="single-field">    
-  	<p><%= f.submit "Create my recipe", class: "btn btn-success" %></p>
+          </p>  	    
+  	    <p><%= f.submit "Create my recipe", class: "btn btn-success" %></p>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>  
