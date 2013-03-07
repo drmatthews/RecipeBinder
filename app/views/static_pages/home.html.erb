@@ -1,17 +1,17 @@
 <% if signed_in? %>
-    <section class="col-1-4">
-      <div class="module">
+    <div class="row">
+      <div class="span4">
         <p>
           <%= render 'shared/user_info' %>
         </p>
       </div>
-    </section>
-    <section class="col-3-4">
-      <div class="module">
-        <h3><%=link_to "Current recipes", user_recipes_path(current_user)%></h3>
-        <%= render 'shared/feed' %>
+      <div class="span8">
+        <div class="module">
+          <h3><%=link_to "Current recipes", user_recipes_path(current_user)%></h3>
+          <%= render 'shared/feed' %>
+        </div>
       </div>
-   </section> 
+   </div>
 <% else %>
   <div class="row">
     <div class="span5">
