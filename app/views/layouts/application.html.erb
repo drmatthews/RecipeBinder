@@ -9,13 +9,17 @@
     <%= render 'layouts/shim' %>    
   </head>
   <body>
-    <%= render 'layouts/header' %>	
-    <div class="container-fluid">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert-box #{key}") %>
-      <% end %>	
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+    <%= render 'layouts/header' %>
+    <div id="main" role="main">	
+      <div class="container-fluid">
+      	<div class="content">
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "alert-box #{key}") %>
+          <% end %>	
+          <%= yield %>
+          <%= render 'layouts/footer' %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
