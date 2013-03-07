@@ -4,8 +4,11 @@ RecipeApp::Application.routes.draw do
   get "users/new"
 
   resources :sessions, only: [:new, :create, :destroy]
-
+  resources :relationships, only: [:create, :destroy]
   resources :users do
+    member do
+      get :following, :followers
+    end
     resources :recipes
   end
   

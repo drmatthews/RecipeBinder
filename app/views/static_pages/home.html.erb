@@ -6,10 +6,13 @@
         </p>
       </div>
       <div class="span8">
-        <div class="module">
+      	<section>
           <h3><%=link_to "Current recipes", user_recipes_path(current_user)%></h3>
-          <%= render 'shared/feed' %>
-        </div>
+            <%= render 'shared/feed' %>
+        </section>
+        <section>
+          <%= render 'shared/stats' %>
+        </section>
       </div>
    </div>
 <% else %>
