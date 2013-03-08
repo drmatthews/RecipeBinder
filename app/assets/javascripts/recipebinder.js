@@ -1,11 +1,11 @@
 RB = {
     setup: function() {       
         //$('<div id="recipeInfo" title="Recipe Info"></div>').
-        $('<div id="recipeInfo" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>').
+        $('<div id="recipeInfo" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));   
         $('#recipes #recipeID').button().click(RB.getRecipeInfo);
-        $('<div id="editrecipeInfo"></div>').
+        $('<div id="editrecipeInfo" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));
     },
@@ -19,14 +19,13 @@ RB = {
         return(false);
     },   
     showRecipeInfo: function(data) {
-       var oneFourth = Math.ceil($(window).width() / 4);
-       $('#recipeInfo').html(data).modal().modal('show');
-	   $('#editLink').button().click(RB.putRecipeInfo);
+        $('#recipeInfo').html(data).modal('show');
+	$('#editLink').button().click(RB.putRecipeInfo);
         return(false);  // prevent default link action
     },
     putRecipeInfo: function() {
         $.ajax({type: 'GET',
-                url: $('#editLink').attr('href'),
+                url: $(this).attr('href'),
                 timeout: 5000,
                 success: RB.editRecipeInfo,
                 error: function() { alert('Error!'); }
@@ -34,18 +33,8 @@ RB = {
         return(false);
     },
     editRecipeInfo: function(data) {
-        // center a floater 1/2 as wide and 1/4 as tall as screen
-        var oneFourth = Math.ceil($(window).width() / 4);
-        $('#recipeInfo').dialog('close');
-        $('#editrecipeInfo').html(data).dialog({
-       		autoOpen: false,
-       		show: 'blind',
-       		hide: 'blind',
-			'left': oneFourth,  
-			'width': 2*oneFourth,
-			'top': 250,
-			modal: true
-			}).dialog('open');
+        $('#recipeInfo').modal('hide');
+        $('#editrecipeInfo').html(data).modal().modal('show');
 		$('#addIngredient').button();
 		$('#addStep').button();	
         $('#updateRecipe').button();
