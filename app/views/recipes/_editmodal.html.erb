@@ -3,46 +3,61 @@
   <h2> Edit recipe: <%= @recipe.title%></h2>
 </div>
 <div class="modal-body">
-    <h4> Details </h4>
-      <%= nested_form_for([@user,@recipe], :method => :put) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-          <p>
-              <%= f.label :title %>
-              <%= f.text_field :title %>
+  <div id="myCarousel" class="carousel slide">
+  	 <div class="carousel-inner">
+       <div class="active item">
+         <h4> Details </h4>
+          <%= nested_form_for([@user,@recipe], :method => :put) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+              <p>
+                <%= f.label :title %>
+                <%= f.text_field :title %>
       		
-              <%= f.label :chef %>
-              <%= f.text_field :chef %>
+                <%= f.label :chef %>
+                <%= f.text_field :chef %>
 
-              <%= f.label :category %>
-              <%= f.text_field :category %>
+                <%= f.label :category %>
+                <%= f.text_field :category %>
+              </p>
+       </div>
+       <div class="item">
+         <h4> Ingredients </h4>         
+           <p>
+             <%= f.fields_for :ingredients do |ingredient_field| %>  
+               <%= render 'ingredients', :f => ingredient_field%>
+             <% end%>
+             <%= f.link_to_add "Add ingredient", :ingredients, id:"addIngredient",class:"btn btn-primary" %>
           </p>
-      <h4> Ingredients </h4>         
-        <p>
-          <%= f.fields_for :ingredients do |ingredient_field| %>  
-            <%= render 'ingredients', :f => ingredient_field%>
-          <% end%>
-          <%= f.link_to_add "Add ingredient", :ingredients, id:"addIngredient",class:"btn btn-primary" %>
-        </p>
-      <h4> Method </h4>
-        <p>
-          <%= f.fields_for :steps do |step_field| %>
-			<%= render 'steps', :f => step_field%>
-          <% end %>
-          <%= f.link_to_add "Add step", :steps, id:"addStep", class:"btn btn-primary" %>
-        </p>
-      <h4> Image </h4>        
-        <p>
-            <%= f.file_field :image %>
-        </p>
-        <p>
-            <%= f.label :remote_image_url, "or image URL" %><br />
-            <%= f.text_field :remote_image_url %>
-        </p>
-
-
+       </div>
+       <div class="item">
+         <h4> Method </h4>
+           <p>
+             <%= f.fields_for :steps do |step_field| %>
+			   <%= render 'steps', :f => step_field%>
+             <% end %>
+             <%= f.link_to_add "Add step", :steps, id:"addStep", class:"btn btn-primary" %>
+           </p>
+       </div>
+       <div class="item">
+         <h4> Image </h4>        
+           <p>
+             <%= f.file_field :image %>
+           </p>
+           <p>
+             <%= f.label :remote_image_url, "or image URL" %><br />
+             <%= f.text_field :remote_image_url %>
+           </p>
+       </div>	
+     </div>
+     </div>
+       <!-- Carousel nav -->
+       <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+       <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+  </div>
 </div>
 <div class="modal-footer">
-  <a href="#" class="btn">Close</a>
+  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   <%= f.submit "Update my recipe", {:id => "updateRecipe", :class => "btn btn-primary"} %>
   <% end %>
 </div>

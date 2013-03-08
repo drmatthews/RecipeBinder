@@ -5,11 +5,14 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h3>
-      <section>
-        <%= link_to "New Recipe!", new_user_recipe_path(@user), class: "btn btn-primary" %>
-      </section>
-    </aside>
+      <% if @user == current_user %>
+        <section>
+          <%= link_to "New Recipe!", new_user_recipe_path(@user), class: "btn btn-primary" %>
+        </section>
+      <% end %>
+      </aside>
     <div class="span10">
+      <%= render 'users/follow_form' if signed_in? %>
       <% if @user.recipes.any? %>
         <%= render "recipes/recipes" %>
         <%= will_paginate @recipes %>
