@@ -1,14 +1,13 @@
 RB = {
     setup: function() {       
-        //$('<div id="recipeInfo" title="Recipe Info"></div>').
         $('<div id="recipeInfo" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));   
         $('#recipes #recipeID').button().click(RB.getRecipeInfo);
         $('<div id="editrecipeInfo" class="modal hide fade"></div>').
             hide().
-            appendTo($('body'));
-    },
+            appendTo($('body'));       
+    },   
     getRecipeInfo: function() {
         $.ajax({type: 'GET',
                 url: $(this).attr('href'),
@@ -20,7 +19,7 @@ RB = {
     },   
     showRecipeInfo: function(data) {
         $('#recipeInfo').html(data).modal('show');
-	$('#editLink').button().click(RB.putRecipeInfo);
+		$('#editLink').button().click(RB.putRecipeInfo);
         return(false);  // prevent default link action
     },
     putRecipeInfo: function() {
@@ -36,14 +35,14 @@ RB = {
         $('#recipeInfo').modal('hide');
         $('#editrecipeInfo').html(data).modal().modal('show');
 		$('#addIngredient').button();
-		$('#addStep').button();	
-        $('#updateRecipe').button();
-        $('#updateRecipe').submit(function() {
-          alert('Handler for .submit() called.');
-          return false;
-         });
+		$('#addStep').button();
+		$('#modal-form-submit').on('click', function(e){
+          e.preventDefault();
+		  $('#updateRecipe').submit();
+		  return false;
+  		});	
         return(false); // prevent default link action
-    }, 
+    },
     hideRecipeInfo: function() {
         $('#recipeInfo').hide(); 
         return(false);

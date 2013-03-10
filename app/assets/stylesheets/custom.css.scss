@@ -1,17 +1,7 @@
-@import "bootstrap";
-
-/* mixins, variables, etc. */
 @mixin box_sizing {
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-$grayMediumLight: #eaeaea;
-
-/* universal */
-
-html {
-  overflow-y: scroll;
 }
 
 body {
@@ -32,40 +22,11 @@ textarea {
     margin-bottom: 10px;
   }
 }
-
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.7em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $grayLight;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-
 /* header */
 
 #logo {
   float: left;
-  margin-right: 10px;
+  margin: 10px;
   font-size: 1.7em;
   color: white;
   text-transform: uppercase;
@@ -84,16 +45,16 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  border-top: 1px solid green;
+  color: green;
   a {
-    color: $gray;
-    &:hover { 
-      color: $grayDarker;
+    color: green;
+    &:hover {
+      color: green;
     }
-  }  
-  small { 
-    float: left; 
+  }
+  small {
+    float: left;
   }
   ul {
     float: right;
@@ -110,7 +71,7 @@ footer {
 aside {
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid gray;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -139,7 +100,7 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  width: 80%;
   padding: 10px;
   margin-bottom: 15px;
   @include box_sizing;
@@ -170,9 +131,9 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid gray;
     &:last-child {
-      border-bottom: 1px solid $grayLighter;
+      border-bottom: 1px solid gray;
     }
   }
 }
@@ -194,7 +155,7 @@ input {
   a {
     float: left;
     padding: 0 10px;
-    border-left: 1px solid $grayLighter;
+    border-left: 1px solid gray;
     color: gray;
     &:first-child {
       padding-left: 0;
@@ -202,19 +163,54 @@ input {
     }
     &:hover {
       text-decoration: none;
-      color: $blue;
+      color: blue;
     }
   }
   strong {
     display: block;
   }
 }
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
+.modal {
+  background-color: white;
 }
+
+.modal-header h4 {
+  color: #FFFFFF;
+}
+.modal-body {
+  background-color: white;
+}
+
+.modal-footer {
+  background-color: white;
+}
+
+.nav-tabs {
+  margin-bottom: 0px;
+}
+.tab-content {
+  border: 1px solid #006600;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+#editrecipeInfo {
+    /* new custom width */
+    width: 650px;
+    /* must be half of the width, minus scrollbar on the left (30px) */
+    margin-left: -325px;
+    .tab-content {
+      border: none;
+      padding-left: 20px;
+      padding-bottom: 20px;
+    }
+    .tab-pane {
+      padding-top: 20px;
+    }
+}
+
+#createRecipe {
+  padding: 40px;
+  float: right;
+}
+

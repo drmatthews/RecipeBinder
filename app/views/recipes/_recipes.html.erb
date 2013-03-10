@@ -21,9 +21,9 @@
             			<h5><%= recipe.title %></h5>
             			<p>
               				<div class="actions">
-       		    				<%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%>
+       		    				<%= link_to "Card", user_recipe_path(@user,recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>
        		    			  <% if @user == current_user %>
-       		    				| <%= link_to "remove", user_recipe_path(@user,recipe), :id => 'removeRecipe',:confirm => 'Are you sure?', :method => :delete %>
+       		    				<%= link_to "remove", user_recipe_path(@user,recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
        		    		      <% end %>
        		  				</div>
             			</p>
@@ -43,8 +43,8 @@
           <% @recipes.each do |recipe| %>
             <li>
            	  <h4><%= recipe.title %></h4>
-       		  <%= link_to "Card", user_recipe_path(@user,recipe), {:id => 'recipeID'}%> |
-       		  <%= link_to "remove", user_recipe_path(@user,recipe), :id => 'removeRecipe',:confirm => 'Are you sure?', :method => :delete %>
+       		  <%= link_to "Card", user_recipe_path(@user,recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>
+       		  <%= link_to "remove", user_recipe_path(@user,recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
             </li>
       	  <% end %>
   		  <%= will_paginate @recipes %>
