@@ -1,0 +1,69 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h2> New Recipe</h2>
+</div>
+<div class="modal-body">
+  <%= nested_form_for([@user,@recipe], :method => :put, :html => {:id => "newRecipeForm"}) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#DetailsTab" data-toggle="tab">Details</a></li>
+      <li><a href="#IngredientsTab" data-toggle="tab">Ingredients</a></li>
+      <li><a href="#MethodTab" data-toggle="tab">Method</a></li>
+      <li><a href="#ImagesTab" data-toggle="tab">Images</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="DetailsTab">
+              <div class="row">
+              	<div class="span6 offset2">
+                  <h4> Details </h4>
+                  <p>
+                    <%= f.label :title %>
+                    <%= f.text_field :title %>
+      		
+                    <%= f.label :chef %>
+                    <%= f.text_field :chef %>
+
+                    <%= f.label :category %>
+                    <%= f.text_field :category %>
+                  </p>
+                </div>
+              </div>
+       </div>
+       <div class="tab-pane" id="IngredientsTab">
+         <h4> Ingredients </h4>         
+           <p>
+             <%= f.fields_for :ingredients do |ingredient_field| %>  
+               <%= render 'ingredients', :f => ingredient_field%>
+             <% end%>
+             <%= f.link_to_add "Add ingredient", :ingredients, id:"addIngredient",class:"btn btn-primary" %>
+          </p>
+       </div>
+       <div class="tab-pane" id="MethodTab">
+         <h4> Method </h4>
+           <p>
+             <%= f.fields_for :steps do |step_field| %>
+			   <%= render 'steps', :f => step_field%>
+             <% end %>
+             <%= f.link_to_add "Add step", :steps, id:"addStep", class:"btn btn-primary" %>
+           </p>
+       </div>
+       <div class="tab-pane" id="ImagesTab">
+         <h4> Image </h4>        
+           <p>
+             <%= f.file_field :image %>
+           </p>
+           <p>
+             <%= f.label :remote_image_url, "or image URL" %><br />
+             <%= f.text_field :remote_image_url %>
+           </p>
+       </div>	
+     </div>
+   </div>
+ 
+  <% end %>
+</div>
+<div class="modal-footer">
+  <a id="new-modal-form-submit" class='btn btn-primary' href="#">Submit</a>
+  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
