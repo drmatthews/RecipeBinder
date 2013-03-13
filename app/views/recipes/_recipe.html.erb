@@ -5,13 +5,18 @@
 <div class="modal-body">
   <div>
     <h4>Ingredients</h4>
-    <ul>
+    <table id="ingredients">
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
       <% @ingredients.each do |ingredient| %>
-        <li> 
-          <%= ingredient.content%>
-        </li>
-      <%end%>
-    </ul>
+        <tr>
+          <td><%= check_box_tag "ingredient_ids[]", ingredient.id %></td>
+          <td><%= ingredient.content %></td>
+        </tr>
+      <% end %>
+    </table>    
   </div>
   <div>
     <h4>Method</h4>

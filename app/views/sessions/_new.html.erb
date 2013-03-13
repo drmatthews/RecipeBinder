@@ -1,33 +1,21 @@
-  <div class="module module-signin">
-    <% provide(:title, "Sign in") %>
-    <div class="formcontainer">
-    	<h1>Existing user?</h1>
-    	<h1>Sign in</h1>
-        <%= form_for(:session, url: sessions_path) do |f| %>
-    
-          <div class="single-field">
-          	<%= f.label :email %>
-            <%= f.text_field :email %>
-          </div>
+<% provide(:title, "Sign in") %>
+<h1>Existing user?</h1>
+<h1>Sign in</h1>
+<%= form_for(:session, url: sessions_path) do |f| %>
 
-		  <div class="single-field">
-            <%= f.label :password %>
-            <%= f.password_field :password %>
-          </div>
-          
-          <p><%= link_to "forgot password?", new_password_reset_path%></p>
-          
-          <div class="single-field">
-            <%= f.label :remember_me %>
-            <%= check_box_tag :remember_me, 1, params[:remember_me]%>
-          </div>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
 
-         
-          <div class="single-field">
-            <%= f.submit "Sign in", {:class => "btn btn-signin"}%>
-          </div>
-        
-        
-        <% end %>
-    </div>
-  </section>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <p>
+	<%= link_to "forgot password?", new_password_reset_path%>
+  </p>
+
+  <%= f.label :remember_me %>
+  <%= check_box_tag :remember_me, 1, params[:remember_me]%>
+
+  <%= f.submit "Sign in", {:class => "btn btn-signin"}%>
+
+<% end %>
