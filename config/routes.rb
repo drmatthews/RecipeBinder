@@ -7,7 +7,7 @@ RecipeApp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :users do
     resources :recipes
-    resources :shopping_lists
+    resources :lists
     member do
       get :following, :followers
     end

@@ -7,10 +7,9 @@
       </h3>
       <% if @user == current_user %>
         <section id="newRecipeSection">
-          <%= link_to "New Recipe!", new_user_recipe_path(@user), {:id => "newRecipeBtn", :class => "btn btn-primary"} %>
-          <p>
-	    <%= link_to "New Shopping List!", new_user_shopping_list_path(@user), {:class => "btn btn-primary"} %>
-          </p>
+          <li><%= link_to "New Recipe!", new_user_recipe_path(@user), {:id => "newRecipeBtn", :class => "btn btn-primary"} %></li>
+	      <li><%= link_to "New Shopping List!", user_lists_path(@user), {:class => "btn btn-primary"} %></li>
+       
         </section>
       <% end %>
       </aside>

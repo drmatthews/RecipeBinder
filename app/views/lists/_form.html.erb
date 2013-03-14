@@ -1,0 +1,20 @@
+<% provide(:title, 'New shopping list') %>
+<h1>New shopping list</h1>
+
+<div id = "newlist" class="row">
+  <div class="span8 offset6">
+    <%= nested_form_for([@user,@list], :method => :put) do |f| %>
+      <p>
+      	<%= f.fields_for :items do |item| %>  
+		  <%= render 'list_items', :f => item %>
+        <% end %>
+      </p>
+      <p>
+        <%= f.link_to_add "Add item", :items, class:"btn btn-success" %>
+      </p>
+      <p>
+        <%= f.submit "Create list!", class: "btn btn-large btn-success" %>
+      </p>
+    <% end %>
+  </div>
+</div>
