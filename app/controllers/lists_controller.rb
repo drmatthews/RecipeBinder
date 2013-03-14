@@ -18,7 +18,8 @@ class ListsController < ApplicationController
       flash[:success] = "New list added"
       redirect_to user_lists_path
     else
-      render :action => 'new'
+      setup_list
+      render :action => 'index'
     end
   end
 
