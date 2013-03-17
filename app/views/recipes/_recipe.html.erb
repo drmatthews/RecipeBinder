@@ -5,18 +5,21 @@
 <div class="modal-body">
   <div>
     <h4>Ingredients</h4>
-    <table id="ingredients">
-      <tr>
-        <th></th>
-        <th></th>
-      </tr>
-      <% @ingredients.each do |ingredient| %>
+    <%= form_tag addto_items_path(@user), method: :put do %>
+      <table id="ingredients">
         <tr>
-          <td><%= check_box_tag "ingredient_ids[]", ingredient.id %></td>
-          <td><%= ingredient.content %></td>
+          <th></th>
+          <th></th>
         </tr>
-      <% end %>
-    </table>    
+        <% @ingredients.each do |ingredient| %>
+          <tr>
+            <td><%= check_box_tag "ingredient_ids[]", ingredient.id %></td>
+            <td><%= ingredient.content %></td>
+          </tr>
+        <% end %>
+      </table> 
+      <%= submit_tag "Add to shopping list"%>   
+    <% end%>
   </div>
   <div>
     <h4>Method</h4>

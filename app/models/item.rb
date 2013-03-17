@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :list_id, :name, :position, :quantity
-  belongs_to :list
+  attr_accessible :name, :position, :quantity
+  belongs_to :user
   #act_as_list :scope => :list
 end

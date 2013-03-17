@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy, :show, :new]
+  before_filter :signed_in_user, except: [:index, :show]
   def index
     @user = User.find(params[:user_id])
     @recipes = @user.recipes.paginate(page: params[:page])
