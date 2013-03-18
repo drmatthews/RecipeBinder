@@ -11,7 +11,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="span3 offset5">
+  <div class="span6 offset5">
     <table id="shopping_list">
       <tr>
       	<th></th>
@@ -20,7 +20,7 @@
       <% for item in @items %>
         <tr>
           <td><%= item.name %></td>
-          <td><%= link_to "Delete", item_path(item), method: :delete%></td>
+          <td><%= link_to "Delete", item_path(item), :class => "btn btn-mini btn-danger", method: :delete%></td>
         </tr>
       <% end %>
     </table>
