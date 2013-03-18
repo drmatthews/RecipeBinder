@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
   def addto
     ingredients = Ingredient.find(params[:ingredient_ids])
     ingredients.each do |ingredient|
-      @item = Item.create(:name => ingredient)
+      @item = Item.create(:name => ingredient.content)
     end
     redirect_to items_path
   end

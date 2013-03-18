@@ -14,7 +14,7 @@
         		<li class="span2">
           			<div class="thumbnail">
           				<% if recipe.image?%>
-            			  <%= image_tag recipe.image_url(:thumb) %>
+            			  <%= image_tag recipe.image_url(:thumb), size: "120x120" %>
             			<% else %>
             			  <%= image_tag('blank.png') %>
             			<% end%>

@@ -3,33 +3,37 @@
     <h4> Recipe card for <%= @recipe.title%></h4>
 </div>
 <div class="modal-body">
-  <div>
-    <h4>Ingredients</h4>
-    <%= form_tag addto_items_path(@user), method: :put do %>
-      <table id="ingredients">
-        <tr>
-          <th></th>
-          <th></th>
-        </tr>
-        <% @ingredients.each do |ingredient| %>
+  <div class="row">
+    <div class="span6">
+      <h4>Ingredients</h4>
+      <%= form_tag addto_items_path(@user), method: :put do %>
+        <table id="ingredients">
           <tr>
-            <td><%= check_box_tag "ingredient_ids[]", ingredient.id %></td>
-            <td><%= ingredient.content %></td>
+            <th></th>
+            <th></th>
           </tr>
-        <% end %>
-      </table> 
-      <%= submit_tag "Add to shopping list"%>   
-    <% end%>
+          <% @ingredients.each do |ingredient| %>
+            <tr>
+              <td><%= check_box_tag "ingredient_ids[]", ingredient.id %></td>
+              <td><%= ingredient.content %></td>
+            </tr>
+          <% end %>
+        </table> 
+        <div id="addtolistbtn"><%= submit_tag "Add to shopping list", :class => "btn btn-primary"%></div>   
+      <% end%>
+    </div>
   </div>
-  <div>
-    <h4>Method</h4>
-    <ol>
-      <% @steps.each do |step| %>
-        <li> 
-          <%= step.content%>
-        </li>
-      <%end%>
-    </ol>
+  <div class="row">
+    <div class="span6">
+      <h4>Method</h4>
+      <ol>
+        <% @steps.each do |step| %>
+          <li> 
+            <%= step.content%>
+          </li>
+        <%end%>
+      </ol>
+    </div>
   </div>
 </div>
 <div class="modal-footer">
