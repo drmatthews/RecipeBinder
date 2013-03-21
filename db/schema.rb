@@ -11,11 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312091045) do
+ActiveRecord::Schema.define(:version => 20130316073133) do
 
   create_table "ingredients", :force => true do |t|
     t.string   "content"
     t.integer  "recipe_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "items", :force => true do |t|
+    t.string   "name"
+    t.integer  "list_id"
+    t.integer  "position"
+    t.integer  "quantity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "lists", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -40,22 +57,6 @@ ActiveRecord::Schema.define(:version => 20130312091045) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
-
-  create_table "shopping_list_items", :force => true do |t|
-    t.string   "name"
-    t.integer  "shopping_list_id"
-    t.integer  "position"
-    t.integer  "quantity"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  create_table "shopping_lists", :force => true do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "steps", :force => true do |t|
     t.string   "content"
