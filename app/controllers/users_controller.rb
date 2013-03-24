@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.paginate(page: params[:page])
+    @feed_items = @user.feed.paginate(page: params[:page])
   end
 
   def new
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to Recipe Binder!"
       redirect_to @user
     else
       render 'new'

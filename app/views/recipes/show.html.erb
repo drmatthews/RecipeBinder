@@ -1,28 +1,33 @@
-<div class="col-1-0`">
-  <h2> Recipe card for <%= @recipe.title%></h2>	
-  <div>
-  	<h2>Ingredients</h2>
-    <ul>
-      <% @ingredients.each do |ingredient| %>
-        <li> 
-        	<%= ingredient.content%>
-        </li>
-      <%end%>
-    </ul>
+  <div class="row">
+    <div class="span6">
+      <h4>Ingredients</h4>
+      <%= form_tag addto_items_path(@user), method: :put do %>
+        <table id="ingredients">
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @ingredients.each do |ingredient| %>
+            <tr>
+              <td><%= check_box_tag "ingredient_ids[]", ingredient.id %></td>
+              <td><%= ingredient.content %></td>
+            </tr>
+          <% end %>
+        </table> 
+        <div id="addtolistbtn"><%= submit_tag "Add to shopping list", :class => "btn btn-primary"%></div>   
+      <% end%>
+    </div>
   </div>
-  <div>
-  	<h2>Method</h2>
-    <ol>
-      <% @steps.each do |step| %>
-        <li> 
-        	<%= step.content%>
-        </li>
-      <%end%>
-    </ol>
+  <div class="row">
+    <div class="span6">
+      <h4>Method</h4>
+      <ol>
+        <% @steps.each do |step| %>
+          <li> 
+            <%= step.content%>
+          </li>
+        <%end%>
+      </ol>
+    </div>
   </div>
-  <p>
-  	<% if @user == current_user %>
-      <%= link_to 'Edit', edit_user_recipe_path(@user,@recipe), {:id => "editLink"}%>
-    <% end %>
-  </p>
-</div>  
+  <%= link_to 'Edit', edit_recipe_path(@recipe), {:id => "editLink", :class => "btn btn-primary"}%>

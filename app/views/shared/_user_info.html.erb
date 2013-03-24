@@ -1,9 +1,9 @@
-<a href="<%= user_recipes_path(current_user) %>">
+
   <h3>	
     <%= gravatar_for current_user, size: 52 %>
     <%= current_user.name %>
   </h3>
-</a>
+
 
 <span>
   <%= pluralize(current_user.recipes.count, "recipe") %>

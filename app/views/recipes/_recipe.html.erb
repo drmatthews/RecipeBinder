@@ -38,8 +38,8 @@
 </div>
 <div class="modal-footer">
   <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  <% if @user == current_user %>
-  	<%= link_to 'Edit', edit_user_recipe_path(@user,@recipe), {:id => "editLink", :class => "btn btn-primary"}%>
+  <% if @recipe.user == current_user %>
+  	<%= link_to 'Edit', edit_recipe_path(@recipe), {:id => "editLink", :class => "btn btn-primary"}%>
   <% end %>
 </div>
 

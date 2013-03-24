@@ -1,21 +1,35 @@
-<% provide(:title, @user.name) %>
-  <div class="col-1-4">
-    <div class="module">
-      <h3>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h3>
-      <section>
-        <%= link_to "New Recipe!", new_user_recipe_path(@user), class: "primary btn" %>
-      </section>
-    </div>
-  </div>
-  <div class="col-3-4">
-  	<div class="module">
-      <% if @user.recipes.any? %>
-        <h3><%= @user.recipes.count %> Recipes</h3>
-        <%= render "recipes/recipes" %>
-        <%= will_paginate @recipes %>
-      <% end %>
-    </div>
-  </div>
+<div class="row-fluid">
+	<aside class="span2">
+		<h3> 
+		  <%= gravatar_for current_user %>
+		  <%= current_user.name %> 
+		</h3>
+		<% if current_user %>
+		  <%= render 'users/follow_form' if signed_in? %>
+		 <section>
+			<%= render 'shared/stats' %>
+		</section>
+		<% end %>
+		<% if current_user %>
+		<section id="newRecipeSection">
+			<li>
+				<%= link_to "New Recipe!", new_recipe_path(current_user), {:id => "newRecipeBtn", :class => "btn btn-primary"} %>
+			</li>
+		</section>
+		<section>
+			<li>
+				<%= link_to "Shopping List", items_path, {:class => "btn btn-primary"} %>
+			</li>
+		</section>
+		<% end %>
+	</aside>
+	<div class="span10">
+		<section>
+			<h3>My recipes</h3>
+			<%= render 'shared/feed' %>
+		</section>
+		<section>
+			<%= link_to "All recipes", recipes_path, :class => "btn btn-primary" %>
+		</section>
+	</div>
+</div>

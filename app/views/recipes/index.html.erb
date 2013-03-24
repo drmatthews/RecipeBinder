@@ -1,13 +1,15 @@
-<% provide(:title, @user.name) %>
+
   <div class="row-fluid">
     <aside class="span2">
       <h3>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
+      	<a href="<%= user_path(current_user) %>">
+          <%= gravatar_for current_user %>
+          <%= current_user.name %>
+        </a>
       </h3>
-      <% if @user == current_user %>
+      <% if current_user %>
         <section id="newRecipeSection">
-          <li><%= link_to "New Recipe!", new_user_recipe_path(@user), {:id => "newRecipeBtn", :class => "btn btn-primary"} %></li>
+          <li><%= link_to "New Recipe!", new_recipe_path(current_user), {:id => "newRecipeBtn", :class => "btn btn-primary"} %></li>
         </section>
         <section>
 	      <li><%= link_to "Shopping List", items_path, {:class => "btn btn-primary"} %></li>
@@ -15,10 +17,6 @@
       <% end %>
       </aside>
     <div class="span10">
-      <%= render 'users/follow_form' if signed_in? %>
-      <% if @user.recipes.any? %>
-        <%= render "recipes/recipes" %>
-        <%= will_paginate @recipes %>
-      <% end %>
+      <%= render "recipes" %>
   </div>
 </div>
