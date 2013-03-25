@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<aside class="span2">
+	<aside class="span2" id="userInfo">
 		<h3> 
 		  <%= gravatar_for current_user %>
 		  <%= current_user.name %> 
@@ -18,7 +18,7 @@
 		</section>
 		<section>
 			<li>
-				<%= link_to "Shopping List", items_path, {:class => "btn btn-primary"} %>
+				<%= link_to "Shopping List", items_path, {:class => "btn btn-primary", :id => "shoppingList"} %>
 			</li>
 		</section>
 		<% end %>

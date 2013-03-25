@@ -6,7 +6,11 @@ RB = {
         $('#recipes #recipeID').button().click(RB.getRecipeInfo);
         $('<div id="editrecipeInfo" class="modal hide fade"></div>').
             hide().
-            appendTo($('body'));       
+            appendTo($('body'));
+        $('<div id="list" class="modal hide fade"></div>').
+            hide().
+            appendTo($('body'));
+        $('#userInfo #shoppingList').button().click(RB.getShoppingList);       
     },   
     getRecipeInfo: function() {
         $.ajax({type: 'GET',
@@ -46,6 +50,19 @@ RB = {
     hideRecipeInfo: function() {
         $('#recipeInfo').hide(); 
         return(false);
+    },
+    getShoppingList: function() {
+        $.ajax({type: 'GET',
+                url: $(this).attr('href'),
+                timeout: 5000,
+                success: RB.showShoppingList,
+                error: function() { alert('Error!'); }
+               });
+        return(false);
+    },
+    showShoppingList: function(data) {
+        $('#list').html(data).modal('show');
+        return(false);  // prevent default link action
     }
 }
 $(RB.setup);       // when document ready, run setup code

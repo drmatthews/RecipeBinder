@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_filter :signed_in_user
   def index
     @items = Item.all
+    render :partial => 'new' if request .xhr?
   end
 
   def new
@@ -13,6 +14,7 @@ class ItemsController < ApplicationController
     
     if @item.save
       redirect_to items_path
+      render :partial => 'new' if request .xhr?
     else
       render :action => 'index'
     end

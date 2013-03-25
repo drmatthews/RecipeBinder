@@ -1,6 +1,6 @@
 
   <div class="row-fluid">
-    <aside class="span2">
+    <aside class="span2" id="userInfo">
       <h3>
       	<a href="<%= user_path(current_user) %>">
           <%= gravatar_for current_user %>
@@ -12,7 +12,7 @@
           <li><%= link_to "New Recipe!", new_recipe_path(current_user), {:id => "newRecipeBtn", :class => "btn btn-primary"} %></li>
         </section>
         <section>
-	      <li><%= link_to "Shopping List", items_path, {:class => "btn btn-primary"} %></li>
+	      <li><%= link_to "Shopping List", items_path, {:class => "btn btn-primary", :id => "shoppingList"} %></li>
         </section>
       <% end %>
       </aside>

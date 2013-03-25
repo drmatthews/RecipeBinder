@@ -43,7 +43,9 @@
             <li>
            	  <h4><%= recipe.title %></h4>
        		  <%= link_to "Card", recipe_path(recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>
-       		  <%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
+       		    			<% if @user == current_user %>
+       		    				<%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
+       		    		    <% end %>
             </li>
       	  <% end %>
          <%= will_paginate @recipes %>
