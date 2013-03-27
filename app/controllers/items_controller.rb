@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_filter :signed_in_user
   def index
     @items = Item.all
-    render :partial => 'new' if request .xhr?
+    #render :partial => 'new' if request .xhr?
   end
 
   def new
