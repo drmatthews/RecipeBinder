@@ -7,10 +7,10 @@ RB = {
         $('<div id="editrecipeInfo" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));
-        $('<div id="list" class="modal hide fade"></div>').
+       /* $('<div id="list" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));
-        $('#userInfo #shoppingList').button().click(RB.getShoppingList);       
+        $('#userInfo #shoppingList').button().click(RB.getShoppingList);  */     
     },   
     getRecipeInfo: function() {
         $.ajax({type: 'GET',

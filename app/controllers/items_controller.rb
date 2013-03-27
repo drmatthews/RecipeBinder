@@ -11,13 +11,16 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.create!(params[:item])
-    
-    if @item.save
-      redirect_to items_path
-      render :partial => 'new' if request .xhr?
-    else
-      render :action => 'index'
-    end
+    respond_to do |format|
+      format.html{ redirect_to items_path }
+      format.js
+    end   
+#    if @item.save
+#      redirect_to items_path
+#      render :partial => 'new' if request .xhr?
+#    else
+#      render :action => 'index'
+#    end
   end
 
   def edit
