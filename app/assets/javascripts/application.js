@@ -15,5 +15,4 @@
 //= require jquery-ui
 //= require_tree .
 //= require bootstrap
-//= require jquery_nested_form
-//= require foundation
+

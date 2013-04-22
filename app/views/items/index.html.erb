@@ -1,23 +1,17 @@
 <% provide(:title, 'Shopping list') %>
 <div class="row">
   <div class="span6 offset5">
-  	<h2>Create a shopping list</h2>
-    <%= form_tag('/Items', :method => :get, :remote => :true) do %>
-      <p>
-        <%= text_field_tag :name %>
-        <%= submit_tag "Add", :class => "btn btn-success"%>
-      </p>
-    <% end %>
+	<h2>Create a shopping list</h2>
+	<%= form_for Item.new, remote: true do |f| %>
+	<p>
+		<%= f.text_field :name %>
+		<%= f.submit "Add", :class => "btn btn-primary btn-success" %>
+	</p>
+	<% end %>
   </div>
 </div>
 <div class="row">
-  <div class="span6 offset5">
-    <table  id="shopping_list">
-      <tr>
-      	<th></th>
-      	<th></th>
-      </tr>
-	  <%= render @items %>
-    </table>
-  </div>
+	<div class="span6 offset5" id="items">
+		<%= render @items %>
+	</div>
 </div>

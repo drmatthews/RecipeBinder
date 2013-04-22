@@ -9,7 +9,7 @@
       </h3>
       <% if current_user %>
         <section id="newRecipeSection">
-          <li><%= link_to "New Recipe!", new_recipe_path(current_user), {:id => "newRecipeBtn", :class => "btn btn-primary"} %></li>
+          <li><%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %></li>
         </section>
         <section>
 	      <li><%= link_to "Shopping List", items_path, {:class => "btn btn-primary", :id => "shoppingList"} %></li>

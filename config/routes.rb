@@ -1,5 +1,6 @@
 RecipeApp::Application.routes.draw do
-
+  
+ 
   root to: 'recipes#index'
   get "users/new"
 

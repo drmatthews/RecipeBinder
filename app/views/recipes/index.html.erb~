@@ -1,23 +1,22 @@
-<h1> All Recipes </h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th> Name </th>
-      <th> Category </th> 
-      <th> Chef </th>
-      <th> Method </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.category %></td>
-        <td><%= recipe.chef %></td>
-        <td><%= link_to "Method for #{recipe.title}", recipe_path(recipe) %></td>
-      </tr>
-    <%end%>
-  </tbody>
-</table>
-
+  <div class="row-fluid">
+    <aside class="span2" id="userInfo">
+      <h3>
+      	<a href="<%= user_path(current_user) %>">
+          <%= gravatar_for current_user %>
+          <%= current_user.name %>
+        </a>
+      </h3>
+      <% if current_user %>
+        <section id="newRecipeSection">
+          <li><%= link_to "New Recipe!", new_recipe_path, {:id => "newRecipeBtn", :class => "btn btn-primary"}, remote: true %></li>
+        </section>
+        <section>
+	      <li><%= link_to "Shopping List", items_path, {:class => "btn btn-primary", :id => "shoppingList"} %></li>
+        </section>
+      <% end %>
+      </aside>
+    <div class="span10">
+      <%= render "recipes" %>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+$('#newRecipeBtn').hide().after('<%= j render("new") %>');

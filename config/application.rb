@@ -14,6 +14,7 @@ if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
+ENV["RAILS_ASSET_ID"] = ""
 
 module RecipeApp
   class Application < Rails::Application

@@ -7,6 +7,9 @@ RB = {
         $('<div id="editrecipeInfo" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));
+        $('<div id="newRecipeModal" class="modal hide fade"></div>').
+            hide().
+            appendTo($('body'));
        /* $('<div id="list" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));
@@ -42,7 +45,7 @@ RB = {
 		$('#addStep').button();
 		$('#modal-form-submit').on('click', function(e){
           e.preventDefault();
-		  $('#updateRecipe').submit();
+		  $('.updateRecipe').submit();
 		  return false;
   		});	
         return(false); // prevent default link action

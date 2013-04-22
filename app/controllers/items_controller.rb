@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.build
+    @item = Item.new
   end
 
   def create
@@ -15,12 +15,6 @@ class ItemsController < ApplicationController
       format.html{ redirect_to items_path }
       format.js
     end   
-#    if @item.save
-#      redirect_to items_path
-#      render :partial => 'new' if request .xhr?
-#    else
-#      render :action => 'index'
-#    end
   end
 
   def edit
@@ -37,10 +31,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    flash[:sucess] = "Shopping list item successfully deleted"
-    redirect_to items_path
+    @item = Item.destroy(params[:id])
+    respond_to do |format|
+      format.html { redirect_to items_url }
+      format.js
+    end
   end
   
   def addto

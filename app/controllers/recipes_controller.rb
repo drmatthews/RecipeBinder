@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
   before_filter :signed_in_user, except: [:index, :show]
+  respond_to :html, :js
+  
   def index
     #@user = User.find(params[:user_id])
     #@recipes = Recipe.all
@@ -9,7 +11,8 @@ class RecipesController < ApplicationController
   def new
     @recipe = current_user.recipes.build
     3.times { @recipe.ingredients.build } 
-    3.times { @recipe.steps.build }  
+    3.times { @recipe.steps.build }
+    respond_with(@recipe)   
   end
 
   def create
@@ -17,7 +20,7 @@ class RecipesController < ApplicationController
    
     if @recipe.save
       flash[:success] = "New recipe added"
-      redirect_to user_path
+      respond_with(@recipe)
     else
       render :action => 'new'
     end
@@ -43,13 +46,13 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.find(params[:id])
     @recipe.update_attributes!(params[:recipe])
     flash[:success] = "Recipe successfully updated"
-    redirect_to @recipe
+    redirect_to user_path(current_user)
   end
 
   def destroy
     @recipe = current_user.recipes.find(params[:id])
     @recipe.destroy
     flash[:sucess] = "Recipe successfully deleted"
-    redirect_to user_path
+    redirect_to user_path(current_user)
   end
 end

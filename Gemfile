@@ -7,14 +7,10 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
-gem "nested_form"
-gem 'simple_form'
-gem 'gumby-rails'
 gem 'compass-rails'
-gem 'zurb-foundation'
-gem 'formtastic'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'rack-offline'
 
 group :development, :test do
   gem 'ruby-debug19'
@@ -23,7 +19,6 @@ group :development, :test do
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'  
   gem 'spork', '0.9.2'
-  gem "nifty-generators", :group => :development
 end
 
 # Gems used only for assets and not required

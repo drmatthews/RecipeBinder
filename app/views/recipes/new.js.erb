@@ -1,0 +1,3 @@
+var recipe_form = $('<%= j(render(:partial => "new"))%>');
+
+$('#newRecipeModal').html(recipe_form).modal('show');

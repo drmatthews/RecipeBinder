@@ -1,0 +1,4 @@
+<%= form_for item, remote: true do |f| %>
+  <%= item.name %>
+  <%= link_to "remove", item, method: :delete, :class => "btn btn-mini btn-danger", remote: true %>
+<% end %>
