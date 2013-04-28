@@ -2,7 +2,10 @@ class ItemsController < ApplicationController
   before_filter :signed_in_user
   def index
     @items = Item.all
-    #render :partial => 'new' if request .xhr?
+    respond_to do |format|
+      format.html { render @items }
+      format.js
+    end
   end
 
   def new

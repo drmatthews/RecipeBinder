@@ -10,10 +10,9 @@ RB = {
         $('<div id="newRecipeModal" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));
-       /* $('<div id="list" class="modal hide fade"></div>').
+        $('<div id="list" class="modal hide fade"></div>').
             hide().
-            appendTo($('body'));
-        $('#userInfo #shoppingList').button().click(RB.getShoppingList);  */     
+            appendTo($('body'));     
     },   
     getRecipeInfo: function() {
         $.ajax({type: 'GET',
