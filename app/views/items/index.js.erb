@@ -1,3 +1,5 @@
-var list_form = $('<%= j(render(:partial => "new"))%>');
+$('#recipeInfo').modal('hide');
+
+var list_form = $('<%= j(render(:partial => "form"))%>');
 
 $('#list').html(list_form).modal('show');

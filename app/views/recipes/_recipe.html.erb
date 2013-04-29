@@ -6,7 +6,7 @@
   <div class="row">
     <div class="span6">
       <h4>Ingredients</h4>
-      <%= form_tag addto_items_path(@user), method: :put do %>
+      <%= form_tag addto_items_path(@user), method: :put, remote: true do %>
         <table id="ingredients">
           <tr>
             <th></th>
@@ -19,7 +19,7 @@
             </tr>
           <% end %>
         </table> 
-        <div id="addtolistbtn"><%= submit_tag "Add to shopping list", {:class => "btn btn-primary"}%></div>   
+        <div id="addtolistbtn"><%= submit_tag "Add to shopping list", :class => "btn btn-primary"%></div>   
       <% end%>
     </div>
   </div>
