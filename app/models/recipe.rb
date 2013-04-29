@@ -7,5 +7,7 @@ class Recipe < ActiveRecord::Base
   validates_associated :ingredients, :steps
   attr_accessible :category, :chef, :title, :ingredients_attributes, :steps_attributes, :image, :remote_image_url
   mount_uploader :image, ImageUploader
-
+  def self.all_categories
+    Recipe.select(:category).uniq.map{|x| x.category}
+  end
 end
