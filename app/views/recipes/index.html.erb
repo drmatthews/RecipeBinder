@@ -1,6 +1,6 @@
 
   <div class="row-fluid">
-    <aside class="span2" id="userInfo">
+    <aside class="span2">
       <h3>
       	<a href="<%= user_path(current_user) %>">
           <%= gravatar_for current_user %>
@@ -15,6 +15,12 @@
 	      <li><%= link_to "Shopping List", items_path, :class => "btn btn-primary", :id => "shoppingList", remote: true %></li>
         </section>
       <% end %>
+          <section>
+	  <h3>Recipe categories</h3>
+        <% @all_categories.each do |category|%>
+	  <li><%= category %></li>
+        <% end %>
+      </section>
       </aside>
     <div class="span10">
       <%= render "recipes" %>
