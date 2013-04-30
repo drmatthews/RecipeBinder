@@ -19,6 +19,9 @@
             			  <%= image_tag('blank.png') %>
             			<% end%>
             			<h5><%= recipe.title %></h5>
+				<% if recipe.tag_list %>
+				  <p>Tags: <%= recipe.tag_list %></p>
+				<% end %>
 						<em>added by <%= link_to recipe.user.name, recipe.user %></em>
              			<div class="actions">
        		    			<%= link_to "Card", recipe_path(recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>

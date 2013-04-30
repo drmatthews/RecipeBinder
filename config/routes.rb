@@ -1,6 +1,6 @@
 RecipeApp::Application.routes.draw do
   
- 
+  get 'tags/:tag', to: 'recipes#index', as: :tag	 
   root to: 'recipes#index'
   get "users/new"
 
