@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
    
     if @recipe.save
       flash[:success] = "New recipe added"
-      respond_with(@recipe)
+      respond_with(@recipe, :location => recipes_path)
     else
       render :action => 'new'
     end
