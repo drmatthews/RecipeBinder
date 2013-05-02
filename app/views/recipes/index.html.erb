@@ -14,15 +14,41 @@
 			</li>
 		</section>
 		<% end %>
-		<section>
-		  <div id="tag_cloud">
-		    <% tag_cloud Recipe.tag_counts, %w{s m l} do |tag, css_class| %>
-			<%= link_to tag.name, tag_path(tag.name), class: css_class %>
-		    <% end %>
-		  </div>
-		</section>
 	</aside>
-	<div class="span10" id="recipes_section">
+	<div class="span8" id="recipes-section">
+		<% if @tag || params[:search].present? %>
+		<div class="filters">
+			<strong>Filtering:</strong>
+			<% if params[:search].present? %>
+				<span class="filter"><%= params[:search] %> <%= link_to "x", params.merge(:search => nil, :page => nil) %></span>
+			<% end %>
+			<% if @tag %>
+				<span class="filter"><%= @tag.name %> <%= link_to "x", params.merge(:tag => nil, :page => nil) %></span>
+			<% end %>
+		</div>
+		<% end %>
+		<h3><%= @recipes.count %> Recipes</h3>
+		<h4 id="views">
+			View as:
+			<div class="btn-group">
+				<%= link_to "Full", params.merge(:view => nil, :page => nil), :title => "Full View", :class => 'btn' %>
+				<%= link_to "List", params.merge(:view => "list", :page => nil), :title => "List View", :class => 'btn' %>
+				<%= link_to "Grid", params.merge(:view => "grid", :page => nil), :title => "Grid View", :class => 'btn' %>
+			</div>
+		</h4>		
 		<%= render "recipes" %>
 	</div>
+	<aside class="span2">
+		<section>
+		  <div class="categories">
+		  	<h2>Categories</h2>
+		  	  <ul>
+		    	<% @all_tags.each do |tag| %>
+					<li><%= link_to tag, tag_path(tag)%></li>
+		    	<% end %>
+		      </ul>
+		  </div>
+		</section>
+		
+	</aside>
 </div>

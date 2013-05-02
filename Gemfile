@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+gem 'mysql2'
+gem 'thinking-sphinx'
 gem 'bootstrap-sass', '2.1'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
@@ -14,7 +16,6 @@ gem 'rack-offline'
 
 group :development, :test do
   gem 'ruby-debug19'
-  gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'  
@@ -39,6 +40,6 @@ group :test do
   # gem 'growl', '1.0.3'
 end
 
-group :production do
-  gem 'pg', '0.12.2'
-end
+#group :production do
+#  gem 'pg', '0.12.2'
+#end

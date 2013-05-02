@@ -24,6 +24,11 @@
             <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
         </ul>
+        <%= form_tag recipes_path, method: :get, :class => 'navbar-search pull-left' do %>
+  			<div id="search-field">
+    			<%= text_field_tag :search, params[:search], :class => "input-medium search-query", :placeholder =>"Search" %>
+    	    </div>
+		<% end %>
       </nav>
   </div>
 </header>

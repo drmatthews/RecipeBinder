@@ -1,59 +1,56 @@
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">Gallery</a></li>
-    <li><a href="#tab2" data-toggle="tab">List</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="tab1">
-      <p>
-      	<div id="recipes">
-      	  <h3><%= @recipes.count %> Recipes</h3>
-  		  <%= @recipes.each_slice(5) do |slice| %>
-    	    <ul class="thumbnails">
-              <% slice.each do |recipe| %>
-        		<li class="span2">
-          			<div class="thumbnail">
-          				<% if recipe.image?%>
-            			  <%= image_tag recipe.image_url(:thumb), size: "120x120" %>
-            			<% else %>
-            			  <%= image_tag('blank.png') %>
-            			<% end%>
-            			<h5><%= recipe.title %></h5>
-				<% if recipe.tag_list %>
-				  <p>Tags: <%= recipe.tag_list %></p>
-				<% end %>
-						<em>added by <%= link_to recipe.user.name, recipe.user %></em>
-             			<div class="actions">
-       		    			<%= link_to "Card", recipe_path(recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>
-       		    			<% if @user == current_user %>
-       		    				<%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
-       		    		    <% end %>
-       		  			</div>
-          			</div>
-        		</li>
-      		  <% end %>
-    		</ul>
-  	      <% end %>
-  		  <%= will_paginate @recipes %>
-		</div>
-      </p>
-    </div>
-    <div class="tab-pane" id="tab2">
-      <p>
-      	<div id="recipes">
-      	  <h3><%= @recipes.count %> Recipes</h3>
-          <% @recipes.each do |recipe| %>
-            <li>
-           	  <h4><%= recipe.title %></h4>
-       		  <%= link_to "Card", recipe_path(recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>
-       		    			<% if @user == current_user %>
-       		    				<%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
-       		    		    <% end %>
-            </li>
-      	  <% end %>
-         <%= will_paginate @recipes %>
-		</div>
-      </p>
-    </div>
-  </div>
+<div id="recipes">
+<% if params[:view] == 'grid' || params[:view].blank?%>
+	<div class="grid">
+		<%= @recipes.each_slice(5) do |slice| %>
+		<ul class="thumbnails">
+			<% slice.each do |recipe| %>
+			<li class="span2">
+				<div class="thumbnail">
+					<% if recipe.image?%>
+						<%= image_tag recipe.image_url(:thumb), size: "120x120" %>
+					<% else %>
+						<%= image_tag('blank.png') %>
+					<% end%>
+					<h5><%= recipe.title %></h5>
+					<% if recipe.tag_list %>
+						<p>
+							Tags: <%= recipe.tag_list %>
+						</p>
+					<% end %>
+					<em>added by <%= link_to recipe.user.name, recipe.user %></em>
+					<div class="actions">
+						<%= link_to "Card", recipe_path(recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>
+						<% if @user == current_user %>
+							<%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
+						<% end %>
+					</div>
+				</div>
+			</li>
+			<% end %>
+		</ul>
+		<% end %>
+		<%= will_paginate @recipes %>
+	</div>
+	<% elsif params[:view] == 'list'%>
+		<table class="table table-striped">
+          <tr>
+            <th>Name</th>
+            <th>Chef</th>
+            <th></th>
+            <% if @user == current_user %>
+            	<th></th>
+            <% end %>
+          </tr>
+          <% for recipe in @recipes %>
+            <tr>
+              <td><%= recipe.title %></td>
+              <td><%= recipe.chef %></td>
+              <td><%= link_to "Card", recipe_path(recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%></td>
+			  <% if @user == current_user %>
+				 <td><%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %></td>
+			 <% end %>              
+            </tr>
+          <% end %>
+        </table>
+<% end %>
 </div>
