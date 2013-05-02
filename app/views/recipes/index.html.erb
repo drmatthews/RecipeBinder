@@ -27,18 +27,18 @@
 			<% end %>
 		</div>
 		<% end %>
-		<h3><%= @recipes.count %> Recipes</h3>
+		<h3><%= @recipes.count %> Recipes</h3>	
+		<%= render "recipes" %>
+	</div>
+	<aside class="span2">
 		<h4 id="views">
-			View as:
+			View:
 			<div class="btn-group">
 				<%= link_to "Full", params.merge(:view => nil, :page => nil), :title => "Full View", :class => 'btn' %>
 				<%= link_to "List", params.merge(:view => "list", :page => nil), :title => "List View", :class => 'btn' %>
 				<%= link_to "Grid", params.merge(:view => "grid", :page => nil), :title => "Grid View", :class => 'btn' %>
 			</div>
-		</h4>		
-		<%= render "recipes" %>
-	</div>
-	<aside class="span2">
+		</h4>	
 		<section>
 		  <div class="categories">
 		  	<h2>Categories</h2>
