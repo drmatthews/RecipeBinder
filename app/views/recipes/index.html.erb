@@ -1,7 +1,5 @@
 <div class="row-fluid">
 	<aside class="span2">
-		<h3><a href="<%= user_path(current_user) %>"> <%= gravatar_for current_user %>
-		<%= current_user.name %> </a></h3>
 		<% if current_user %>
 		<section id="newRecipeSection">
 			<li>
@@ -27,16 +25,29 @@
 			<% end %>
 		</div>
 		<% end %>
-		<h3><%= @recipes.count %> Recipes</h3>	
+		<h3><%= @recipes.count %> Recipes: 
+			<% if params[:view].nil? %>
+		    	full view
+		    <% else %>
+		    	<%= params[:view] %> view
+		    <% end %>
+		</h3>	
 		<%= render "recipes" %>
+		<%= will_paginate @recipes %>
 	</div>
 	<aside class="span2">
 		<h4 id="views">
-			View:
 			<div class="btn-group">
-				<%= link_to "Full", params.merge(:view => nil, :page => nil), :title => "Full View", :class => 'btn' %>
-				<%= link_to "List", params.merge(:view => "list", :page => nil), :title => "List View", :class => 'btn' %>
-				<%= link_to "Grid", params.merge(:view => "grid", :page => nil), :title => "Grid View", :class => 'btn' %>
+				<button class='btn btn-primary' id="views">View:</button>
+				<%= link_to params.merge(:view => nil, :page => nil), :title => "Full View", :class => 'btn btn-primary' do %>
+					<i class="icon-th-list icon-white"></i>
+				<% end %>
+				<%= link_to params.merge(:view => "list", :page => nil), :title => "List View", :class => 'btn btn-primary' do%>
+					<i class="icon-align-justify icon-white"></i>
+				<% end %>				
+				<%= link_to params.merge(:view => "grid", :page => nil), :title => "Grid View", :class => 'btn btn-primary' do%>
+					<i class="icon-th-large icon-white"></i>
+				<% end %>				
 			</div>
 		</h4>	
 		<section>

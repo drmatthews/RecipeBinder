@@ -1,10 +1,11 @@
 <header class="navbar navbar-fixed-top ">
   <div class="navbar-inner">
-      <%= link_to "Recipe Binder", root_path, id: "logo" %>
+      <%= link_to "myCookBook", root_path, :class => "brand", :id => 'logo' %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Help", help_path %></li>
+		<li><a href="<%= user_path(current_user) %>"> <%= gravatar_nav_for current_user %>
+			logged in as: <%= current_user.name %> </a></li>
+          <li><%= link_to "Browse recipes", root_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
             <li id="fat-menu" class="dropdown">

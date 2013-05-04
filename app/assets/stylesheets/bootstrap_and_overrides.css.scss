@@ -1,11 +1,14 @@
+$iconSpritePath: asset-url('glyphicons-halflings.png',image);
+$iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png',image);
+@import "bootswatch/spruce/variables";
+@import "bootstrap";
+body { padding-top: 60px; }
+@import "bootstrap-responsive";
+@import "bootswatch/spruce/bootswatch";
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-body {
-  padding-top: 60px;
 }
 
 section {
@@ -22,22 +25,9 @@ textarea {
     margin-bottom: 10px;
   }
 }
-/* header */
 
-#logo {
-  float: left;
-  margin: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
+.clear {
+  clear: both;
 }
 
 /* footer */
@@ -137,19 +127,6 @@ input {
   }
 }
 
-.thumbnail {
-  position: relative;
-  width: 180px;
-  height: 310px;
-  padding: 5px;
-}
-.actions {
-  position: absolute;
-  bottom: 0;
-  float: left;
-  padding-top: 10px;
-}
-
 .stats {
   overflow: auto;
   a {
@@ -171,14 +148,15 @@ input {
   }
 }
 .modal {
-  background-color: white;
+  background: white;
 }
 
 .modal-header h4 {
   color: #FFFFFF;
 }
+
 .modal-body {
-  background-color: white;
+  background-color: #FFFFFF;
 }
 
 .modal-footer {
@@ -197,6 +175,7 @@ input {
 #editrecipeInfo, #newRecipeModal {
     /* new custom width */
     width: 650px;
+    background-color: white;
     /* must be half of the width, minus scrollbar on the left (30px) */
     margin-left: -325px;
     .tab-content {
@@ -229,27 +208,6 @@ input {
   background-color: white;
 }//table
 
-#tag_cloud {
-  width: 180px;
-  line-height: 1.6em;
-  .s {font-size: 0.8em; }
-  .m {font-size: 1.2em; }
-  .l {font-size: 1.8em; }
-  border-radius: 6px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border: solid 1px #003300;
-  border-bottom-color: #003300;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px; 
-  li {
-    list-style-type: none;
-    font-size:1.2em;
-  }
-}
-
 .debug_dump {
   clear: both;
   float: left;
@@ -258,9 +216,7 @@ input {
   @include box_sizing;
 }
 
-.categories {
-  width: 210px;
-}
+
 .categories ul {
   list-style: none;
   margin: 0;
@@ -278,7 +234,7 @@ input {
 
 .categories li {
   margin: 5px 0;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .categories h2 {
@@ -296,15 +252,19 @@ input {
   -moz-border-radius-topright: 6px;
   border: solid 1px #013435;
   border-bottom-color: #013435;
-  background-color: #003300;
-  background: -webkit-gradient(linear, left top, left bottom, from(#015B4E), to(#013435));
+  background-color: #015E50;
+  background: -webkit-gradient(linear, left top, left bottom, from(#015E50), to(#013435));
   background: -moz-linear-gradient(top, #015B4E, #013435);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEE', endColorstr='#CCC');
 }
 
 #search-field {
-  padding-top: 5px;
   padding-left: 20px;
+}
+
+#logo {
+  margin-left: 10px;
+  padding-left: 10px;
 }
 
 /*** FILTERS ***/
@@ -349,29 +309,59 @@ input {
   display: inline-block;
 }
 
+#views {
+  width: 85px;
+}
 .table {
-  width: 30%;
-}
-/**
-.recipe-views .view {
-  padding-left: 3px;
+  width: 50%;
 }
 
-.recipe-views .view img {
-  background-color: #FFF;
-  background: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#FFF));
-  background: -moz-linear-gradient(top, #EEE, #FFF);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEE', endColorstr='#FFF');
-  padding: 7px;
-  vertical-align: middle;
-  border: solid 1px #BBB;
-  border-top: none;
-  border-bottom: none;
+.full .recipe {
+  clear: both;
+  height: 135px;
+  padding-top: 1px;
+  em {
+    font-size: 12px;
+    color: #777;
+  }
+  img {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px 6px #999;
+  }
+  h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .info {
+    font-style: italic;
+    font-size: 12px;
+  }
+  p { margin: 5px 0; }
 }
 
-.recipe-views .view a img {
-  background: none;
-  padding: 2px;
-  border: none;
+.recipes .grid {
+  margin-right: -30px;
 }
-**/
+
+.screenshot img {
+  border: solid 1px #999;
+  display: block;
+  box-shadow: 3px 3px 6px #999;
+}
+
+.grid .recipe {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.grid .name {
+  font-size: 13px;
+  position: absolute;
+  top: 210px;
+  left: 0;
+}

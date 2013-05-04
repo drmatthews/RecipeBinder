@@ -1,0 +1,5 @@
+$('#recipeInfo').modal('hide');
+
+var recipe = $('<%= j(render(:partial => "form"))%>');
+
+$('#editrecipeInfo').html(recipe).modal('show');

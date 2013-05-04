@@ -17,7 +17,6 @@ class RecipesController < ApplicationController
     @all_tags = Recipe.all_tags
     respond_to do |format|
       format.html #{ @recipes = @recipes.paginate(:page => params[:page], :per_page => 15) }
-      format.rss
     end
   end  
 
@@ -44,7 +43,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @ingredients = @recipe.ingredients.all
     @steps = @recipe.steps.all
-    render :partial => 'recipe' if request .xhr?
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -52,7 +54,10 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.find(params[:id])
     @ingredients = @recipe.ingredients.all
     @steps = @recipe.steps.all
-    render :partial => 'editmodal' if request .xhr?
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update

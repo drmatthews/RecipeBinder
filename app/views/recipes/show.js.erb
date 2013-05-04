@@ -1,0 +1,3 @@
+var recipe = $('<%= j(render(:partial => "show"))%>');
+
+$('#recipeInfo').html(recipe).modal('show');

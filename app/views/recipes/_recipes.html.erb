@@ -1,41 +1,37 @@
 <div id="recipes">
-<% if params[:view] == 'grid' || params[:view].blank?%>
+<% if params[:view].nil? %>
+	<div class="full">
+		<%= render @recipes%>
+	</div>
+<% elsif params[:view] == 'grid'%>
 	<div class="grid">
-		<%= @recipes.each_slice(5) do |slice| %>
-		<ul class="thumbnails">
-			<% slice.each do |recipe| %>
-			<li class="span2">
-				<div class="thumbnail">
-					<% if recipe.image?%>
-						<%= image_tag recipe.image_url(:thumb), size: "120x120" %>
-					<% else %>
-						<%= image_tag('blank.png') %>
-					<% end%>
-					<h5><%= recipe.title %></h5>
-					<% if recipe.tag_list %>
-						<p>
-							Tags: <%= recipe.tag_list %>
-						</p>
+          <% for recipe in @recipes %>
+            <div class="recipe">
+              <div class="screenshot">
+				<% if recipe.image?%>
+					<%= image_tag recipe.image_url(:thumb), size: "120x120" %>
+				<% else %>
+					<%= image_tag('blank.png') %>
+				<% end%>              	
+              </div>
+              <div class="name">
+                <%= link_to recipe.title, recipe, remote: true %>
+              </div>
+				<div class="actions">
+					<% if @user == current_user %>
+						<%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
 					<% end %>
-					<em>added by <%= link_to recipe.user.name, recipe.user %></em>
-					<div class="actions">
-						<%= link_to "Card", recipe_path(recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>
-						<% if @user == current_user %>
-							<%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
-						<% end %>
-					</div>
-				</div>
-			</li>
-			<% end %>
-		</ul>
-		<% end %>
-		<%= will_paginate @recipes %>
+				</div>              
+            </div>
+          <% end %>
+          <div class="clear"></div>		
 	</div>
 	<% elsif params[:view] == 'list'%>
 		<table class="table table-striped">
           <tr>
             <th>Name</th>
             <th>Chef</th>
+            <th>Added by</th>
             <th></th>
             <% if @user == current_user %>
             	<th></th>
@@ -45,7 +41,8 @@
             <tr>
               <td><%= recipe.title %></td>
               <td><%= recipe.chef %></td>
-              <td><%= link_to "Card", recipe_path(recipe), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%></td>
+              <td><%= recipe.user.name %></td>
+              <td><%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-primary', remote: true%></td>
 			  <% if @user == current_user %>
 				 <td><%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %></td>
 			 <% end %>              
