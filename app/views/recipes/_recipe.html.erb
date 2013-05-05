@@ -1,10 +1,11 @@
 <%= div_for recipe do %>
 	<% if recipe.image?%>
-		<%= image_tag recipe.image_url(:thumb), size: "120x120" %>
+		<%= image_tag recipe.image_url(:thumb), size: "200x125" %>
 	<% else %>
-		<%= image_tag('blank.png') %>
+		<%= image_tag('blank.png', size: "200x125") %>
 	<% end %>
 	<h2><%= link_to_unless_current recipe.title, recipe, remote: true %></h2>
+	<div class="description"><%= recipe.description %></div>
 	<% if recipe.tag_list %>
 	<p>
 		Tags: <%= recipe.tag_list %>

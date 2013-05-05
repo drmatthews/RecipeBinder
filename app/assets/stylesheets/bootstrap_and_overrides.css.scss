@@ -83,6 +83,7 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 /* forms */
@@ -275,13 +276,13 @@ input {
 
 #recipes-section .filter {
   border: solid 1px #999;
-  border-radius: 10px;
+  border-radius: 5px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   background-color: #DDD;
   padding: 2px 8px;
   margin-bottom: 10px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 #recipes-section .filter a {
@@ -362,6 +363,11 @@ input {
 .grid .name {
   font-size: 13px;
   position: absolute;
-  top: 210px;
+  top: 130px;
   left: 0;
+}
+
+#newRecipeSection p {
+  padding-top: 10px;
+  display: inline-block;
 }

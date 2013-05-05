@@ -1,44 +1,32 @@
 <div class="row-fluid">
 	<aside class="span2">
-		<% if current_user %>
-		<section id="newRecipeSection">
-			<li>
-				<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %>
-			</li>
-		</section>
-		<section>
-			<li>
-				<%= link_to "Shopping List", items_path, :class => "btn btn-primary", :id => "shoppingList", remote: true %>
-			</li>
-		</section>
-		<% end %>
 	</aside>
-	<div class="span8" id="recipes-section">
+	<div class="span8" id="recipes-section">	
 		<% if @tag || params[:search].present? %>
 		<div class="filters">
-			<strong>Filtering:</strong>
+			<h4>Filtering:
 			<% if params[:search].present? %>
 				<span class="filter"><%= params[:search] %> <%= link_to "x", params.merge(:search => nil, :page => nil) %></span>
 			<% end %>
 			<% if @tag %>
 				<span class="filter"><%= @tag.name %> <%= link_to "x", params.merge(:tag => nil, :page => nil) %></span>
 			<% end %>
+			</h4>
 		</div>
 		<% end %>
-		<h3><%= @recipes.count %> Recipes: 
-			<% if params[:view].nil? %>
-		    	full view
-		    <% else %>
-		    	<%= params[:view] %> view
-		    <% end %>
-		</h3>	
+		<span id="newRecipeSection">
+			<p>
+				<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %>
+				<%= link_to "Shopping List", items_path, :class => "btn btn-primary", :id => "shoppingList", remote: true %>
+			</p>
+		</span>		
 		<%= render "recipes" %>
 		<%= will_paginate @recipes %>
 	</div>
 	<aside class="span2">
 		<h4 id="views">
 			<div class="btn-group">
-				<button class='btn btn-primary' id="views">View:</button>
+				<button class='btn btn-primary' id="views" disabled="disabled">View:</button>
 				<%= link_to params.merge(:view => nil, :page => nil), :title => "Full View", :class => 'btn btn-primary' do %>
 					<i class="icon-th-list icon-white"></i>
 				<% end %>
@@ -49,7 +37,7 @@
 					<i class="icon-th-large icon-white"></i>
 				<% end %>				
 			</div>
-		</h4>	
+		</h4>			
 		<section>
 		  <div class="categories">
 		  	<h2>Categories</h2>

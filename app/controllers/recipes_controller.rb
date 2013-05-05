@@ -1,16 +1,12 @@
 class RecipesController < ApplicationController
-  before_filter :signed_in_user, except: [:index, :show]
+  before_filter :signed_in_user
   respond_to :html, :js
   
   def index
-    if params[:search].blank?
-      if params[:tag]
-        @tag = Tag.find_by_name(params[:tag])
-        selected_recipes = Recipe.tagged_with(params[:tag])
-        @recipes = selected_recipes.paginate(page: params[:page], :per_page => 15)
-      else
-        @recipes = Recipe.paginate(page: params[:page], :per_page => 15)
-      end
+    @tag = Tag.find_by_name(params[:tag]) if params[:tag]
+    if params[:search].blank?       
+      selected_recipes = Recipe.tagged_with(params[:tag])
+      @recipes = selected_recipes.paginate(page: params[:page], :per_page => 15)
     else
       @recipes = Recipe.search(params[:search])
     end
