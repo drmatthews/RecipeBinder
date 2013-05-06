@@ -3,16 +3,18 @@ class RecipesController < ApplicationController
   respond_to :html, :js
   
   def index
+    #@recipes = Recipe.paginate(:page => params[:page], :per_page => 15)
+    #debugger
     @tag = Tag.find_by_name(params[:tag]) if params[:tag]
-    if params[:search].blank?       
-      selected_recipes = Recipe.tagged_with(params[:tag])
-      @recipes = selected_recipes.paginate(page: params[:page], :per_page => 15)
+    if params[:search].blank?    
+      @recipes = (@tag ? @tag.recipes : Recipe).all
     else
       @recipes = Recipe.search(params[:search])
     end
+    #debugger
     @all_tags = Recipe.all_tags
     respond_to do |format|
-      format.html #{ @recipes = @recipes.paginate(:page => params[:page], :per_page => 15) }
+      format.html { @recipes = @recipes.paginate(:page => params[:page], :per_page => 15) }
     end
   end  
 

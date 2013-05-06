@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :ingredients, :through=> :recipes, :dependent => :destroy
   has_many :steps, :through=> :recipes, :dependent => :destroy
   has_many :items, :dependent => :destroy
+  has_many :comments
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id",
                                    class_name:  "Relationship",

@@ -148,29 +148,25 @@ input {
     display: block;
   }
 }
-.modal {
-  background: white;
+
+.modal-header .close, h4 {
+  color: white;
 }
 
-.modal-header h4 {
-  color: #FFFFFF;
+.modal-body .tab-content label {
+  color: white;
 }
 
-.modal-body {
-  background-color: #FFFFFF;
+.modal-body .nav-tabs {
+  padding-left: 30px;
 }
 
-.modal-footer {
-  background-color: white;
+.modal-body .tabbable {
+  padding-left: 120px;
 }
 
-.nav-tabs {
-  margin-bottom: 0px;
-}
-.tab-content {
-  border: 1px solid #003300;
-  padding-left: 20px;
-  padding-bottom: 20px;
+.modal-body #items {
+  color: white;
 }
 
 #editrecipeInfo, #newRecipeModal {

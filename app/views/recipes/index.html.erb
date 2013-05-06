@@ -39,14 +39,16 @@
 			</div>
 		</h4>			
 		<section>
-		  <div class="categories">
-		  	<h2>Categories</h2>
-		  	  <ul>
-		    	<% @all_tags.each do |tag| %>
-					<li><%= link_to tag, tag_path(tag)%></li>
-		    	<% end %>
-		      </ul>
-		  </div>
+			<% unless @all_tags.nil?%>
+		  		<div class="categories">
+		  			<h2>Categories</h2>
+		  	  		<ul>
+		    			<% @all_tags.each do |tag| %>
+							<li><%= link_to tag, tag_path(tag)%></li>
+		    			<% end %>
+		      		</ul>
+		  		</div>
+		  	<% end %>
 		</section>
 		
 	</aside>
