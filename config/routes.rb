@@ -6,7 +6,10 @@ RecipeApp::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  resources :recipes
+  resources :recipes do
+    resources :comments
+  end
+  
   resources :users do
     member do
       get :following, :followers

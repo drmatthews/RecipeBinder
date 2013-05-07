@@ -50,6 +50,15 @@
 				</div>				
 			</div>
 			<div class="tab-pane" id="RecipeCommentsTab">
+				<h2>Comments</h2>
+
+				<div id="comments">
+					<%= render @recipe.comments %>
+				</div>
+
+				<h3>New Comment</h3>
+
+				<%= link_to "Comment!", new_recipe_comment_path(@recipe), :class => 'btn btn-success', :id => 'newCommentBtn', remote: true%>			
 			</div>
 		</div>
 	</div>		
