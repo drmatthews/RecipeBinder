@@ -1,3 +1,8 @@
+$('#newCommentBtn').hide();
+$('.modal-body #comment_<%= @comment.id %>').remove();
+
 var comment_form = $('<%= j(render(:partial => "form"))%>');
 
-$('#').html(comment_form).modal('show');
+$('#commentsForm').html(comment_form).append();
+
+$('.modal-body #RecipeDetailsTab a[href="#RecipeCommentsTab"]').tab('show');

@@ -57,8 +57,9 @@
 				</div>
 
 				<h3>New Comment</h3>
-
-				<%= link_to "Comment!", new_recipe_comment_path(@recipe), :class => 'btn btn-success', :id => 'newCommentBtn', remote: true%>			
+				<div id="commentsForm">
+					<%= link_to "Comment!", new_recipe_comment_path(@recipe), :class => 'btn btn-success', :id => 'newCommentBtn', remote: true%>
+				</div>			
 			</div>
 		</div>
 	</div>		
