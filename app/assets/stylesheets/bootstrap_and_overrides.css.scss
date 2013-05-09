@@ -149,20 +149,12 @@ input {
   }
 }
 
-.modal-header .close, h4 {
+.modal-header .close, h2, h4 {
   color: white;
 }
 
 .modal-body .tab-content label {
   color: white;
-}
-
-.modal-body .nav-tabs {
-  padding-left: 30px;
-}
-
-.modal-body .tabbable {
-  padding-left: 120px;
 }
 
 .modal-body #items {
