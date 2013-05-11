@@ -1,0 +1,3 @@
+var comments = $('<%= j(render(:partial => "recipeComments"))%>');
+
+$('#recipeComments').html(comments).modal('show');

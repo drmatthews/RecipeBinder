@@ -1,0 +1,21 @@
+<div id="recipes">
+	<% if @feed_items.any? %>
+		<table class="table table-striped">
+          <tr>
+            <th>Name</th>
+            <th>Added by</th>
+            <th>Actions</th>
+          </tr>
+          <% for recipe in @feed_items %>
+            <tr>
+              <td><%= recipe.title %></td>
+              <td><%= recipe.user.name %></td>
+              <td><%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-success', remote: true%>
+				  <%= link_to "Comments", recipe_comments_path(recipe), :class => 'btn btn-mini btn-warning', remote: true %>              	
+			  <%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %></td>              
+            </tr>
+          <% end %>
+        </table>
+	<%= will_paginate @feed_items %>
+	<% end %>
+</div>
