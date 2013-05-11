@@ -80,6 +80,10 @@ aside {
   }
 }
 
+#newRecipeSection {
+  padding-left: 1%;
+}
+
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -90,7 +94,7 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 80%;
+  width: 70%;
   padding: 10px;
   margin-bottom: 15px;
   @include box_sizing;
@@ -149,11 +153,7 @@ input {
   }
 }
 
-.modal-header .close, h2, h4 {
-  color: white;
-}
-
-.modal-body .tab-content label {
+.modal-header h4 {
   color: white;
 }
 
@@ -161,25 +161,22 @@ input {
   color: white;
 }
 
-#editrecipeInfo, #newRecipeModal {
-    /* new custom width */
-    width: 650px;
+#newRecipeModal, #editrecipeInfo, #recipeInfo {
+  width: 25%;
+  .modal-body {
     background-color: white;
-    /* must be half of the width, minus scrollbar on the left (30px) */
-    margin-left: -325px;
-    .tab-content {
-      border: none;
-      padding-left: 20px;
-      padding-bottom: 20px;
-    }
-    .tab-pane {
-      padding-top: 20px;
-    }
+  }
 }
 
-#createRecipe {
-  padding: 40px;
-  float: right;
+#newRecipeModal, #editrecipeInfo {
+  .tabbable .tab-content {
+    #DetailsTab, #IngredientsTab, #MethodTab, #ImagesTab {
+      padding-left: 10px; 
+    }
+    #recipe_title, #recipe_description, #recipe_tag_list {
+      width: 90%;
+    }
+  }
 }
 
 #addtolistbtn {
@@ -204,7 +201,6 @@ input {
   margin-top: 45px;
   @include box_sizing;
 }
-
 
 .categories ul {
   list-style: none;
@@ -302,12 +298,12 @@ input {
   width: 85px;
 }
 .table {
-  width: 50%;
+  width: 60%;
 }
 
 .full .recipe {
   clear: both;
-  height: 135px;
+  height: 150px;
   padding-top: 1px;
   em {
     font-size: 12px;
@@ -317,18 +313,19 @@ input {
     float: left;
     margin-right: 15px;
     margin-bottom: 10px;
+    margin-top: 10px;
     box-shadow: 3px 3px 6px #999;
   }
   h2 {
     font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   .info {
     font-style: italic;
     font-size: 12px;
   }
-  p { margin: 5px 0; }
+  p { margin: 2px 0; }
 }
 
 .recipes .grid {
@@ -358,4 +355,19 @@ input {
 #newRecipeSection p {
   padding-top: 10px;
   display: inline-block;
+}
+
+#recipeComments {
+  width: 20%;
+}
+
+#commentsForm {
+  padding-left: 20px;
+  #comment_content {
+    width: 90%;
+  }
+}
+
+#comments {
+  color: white;
 }

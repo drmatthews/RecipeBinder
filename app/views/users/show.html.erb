@@ -1,31 +1,31 @@
 <div class="row-fluid">
-	<aside class="span2" id="userInfo">
-		<h3> 
-		  <%= gravatar_side_for current_user %>
-		  <%= current_user.name %> 
-		</h3>
-		<% if current_user %>
-		  <%= render 'users/follow_form' if signed_in? %>
-		 <section>
-			<%= render 'shared/stats' %>
-		</section>
-		<% end %>
-		<% if current_user %>
-		<section id="newRecipeSection">
-			<li><%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %></li>
-		</section>
-		<section>
-			<li><%= link_to "Shopping List", items_path, :class => "btn btn-primary", :id => "shoppingList", remote: true %></li>
-		</section>
-		<% end %>
+	<aside class="span2">
 	</aside>
 	<div class="span10">
-		<section>
-			<h3>My recipes</h3>
-			<%= render 'shared/feed' %>
-		</section>
-		<section>
-			<%= link_to "All recipes", recipes_path, :class => "btn btn-primary" %>
-		</section>
+		<div class="row">
+			<aside class="span3">
+				<h3> 
+		  			<%= gravatar_side_for current_user %>
+		  			<%= current_user.name %> 
+				</h3>
+				<% if current_user %>
+		  			<%= render 'users/follow_form' if signed_in? %>
+		 			<section>
+						<%= render 'shared/stats' %>
+					</section>
+				<% end %>
+			</aside>
+			<div class="span7">
+				<section>
+					<h3>My recipes</h3>
+						<%= render 'feed' %>
+				</section>
+				<section id="newRecipeSection">
+					<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %>
+					<%= link_to "All recipes", recipes_path, :class => "btn btn-primary" %>
+					<%= link_to "Shopping List", items_path, :class => "btn btn-primary", :id => "shoppingList", remote: true %>
+				</section>
+			</div>
+		</div>
 	</div>
 </div>

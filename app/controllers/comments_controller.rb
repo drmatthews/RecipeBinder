@@ -2,8 +2,19 @@ class CommentsController < ApplicationController
   before_filter :signed_in_user
   before_filter :load_recipe
   
+  def index
+    recipe = Recipe.find(params[:recipe_id])
+    @comments = recipe.comments.all
+    debugger
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
   def new
-    @comment = Comment.new
+    recipe = Recipe.find(params[:recipe_id])
+    @comment = recipe.comments.build
     respond_to do |format|
       format.html
       format.js
@@ -33,10 +44,13 @@ class CommentsController < ApplicationController
 
   def update
     @comment = current_user.comments.find(params[:id])
-    if @comment.update_attributes(params[:comment])
-      redirect_to @recipe, notice: "Comment was updated."
-    else
-      render :edit
+    respond_to do |format|
+      if @comment.update_attributes(params[:comment])
+        format.html { redirect_to @recipe, notice: "Comment was created." }
+        format.js
+      else
+        format.html { render :edit }
+      end
     end
   end
 

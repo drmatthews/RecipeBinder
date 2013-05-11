@@ -13,6 +13,9 @@ RB = {
         $('<div id="list" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));     
+        $('<div id="recipeComments" class="modal hide fade"></div>').
+            hide().
+            appendTo($('body')); 
     }
 }
 $(RB.setup);       // when document ready, run setup code

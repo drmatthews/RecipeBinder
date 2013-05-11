@@ -3,64 +3,36 @@
     <h4> Recipe card for <%= @recipe.title%></h4>
 </div>
 <div class="modal-body">
-	<div class="tabbable">
-		<ul class="nav nav-pills">
-			<li class="active">
-				<a href="#RecipeDetailsTab" data-toggle="tab">Details</a>
-			</li>
-			<li>
-				<a href="#RecipeCommentsTab" data-toggle="tab">Comments</a>
-			</li>
-		</ul>
-		<div class="tab-content">
-			<div class="tab-pane active" id="RecipeDetailsTab">
-				<div class="row">
-					<div class="span4">
-						<h4>Ingredients</h4>
-						<%= form_tag addto_items_path(@user), method: :put, remote: true do %>
-						<table id="ingredients">
-							<tr>
-								<th></th>
-								<th></th>
-							</tr>
-							<% @ingredients.each do |ingredient| %>
-							<tr>
-								<td><%= check_box_tag "ingredient_ids[]", ingredient.id %></td>
-								<td><%= ingredient.content %></td>
-							</tr>
-							<% end %>
-						</table>
-						<div id="addtolistbtn">
-							<%= submit_tag "Add to shopping list", :class => "btn btn-primary"%>
-						</div>
-						<% end%>
-					</div>
-				</div>
-				<div class="row">
-					<div class="span4">
-						<h4>Method</h4>
-						<ol>
-							<% @steps.each do |step| %>
-							<li>
-								<%= step.content%>
-							</li>
-							<%end%>
-						</ol>
-					</div>
-				</div>				
-			</div>
-			<div class="tab-pane" id="RecipeCommentsTab">
-				<div id="comments">
-					<%= render @recipe.comments %>
-				</div>
-
-				<h3>New Comment</h3>
-				<div id="commentsForm">
-					<%= link_to "Comment!", new_recipe_comment_path(@recipe), :class => 'btn btn-success', :id => 'newCommentBtn', remote: true%>
-				</div>			
-			</div>
+	<section>
+		<h4>Ingredients</h4>
+		<%= form_tag addto_items_path(@user), method: :put, remote: true do %>
+		<table id="ingredients">
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+			<% @ingredients.each do |ingredient| %>
+			<tr>
+				<td><%= check_box_tag "ingredient_ids[]", ingredient.id %></td>
+				<td><%= ingredient.content %></td>
+			</tr>
+			<% end %>
+		</table>
+		<div id="addtolistbtn">
+			<%= submit_tag "Add to shopping list", :class => "btn btn-primary"%>
 		</div>
-	</div>		
+		<% end%>
+	</section>
+	<section>
+		<h4>Method</h4>
+		<ol>
+			<% @steps.each do |step| %>
+			<li>
+				<%= step.content%>
+			</li>
+			<%end%>
+		</ol>
+	</section>
 </div>
 <div class="modal-footer">
   <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>

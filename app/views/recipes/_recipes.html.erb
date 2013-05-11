@@ -30,7 +30,6 @@
 		<table class="table table-striped">
           <tr>
             <th>Name</th>
-            <th>Chef</th>
             <th>Added by</th>
             <th></th>
             <% if @user == current_user %>
@@ -40,9 +39,11 @@
           <% for recipe in @recipes %>
             <tr>
               <td><%= recipe.title %></td>
-              <td><%= recipe.chef %></td>
               <td><%= recipe.user.name %></td>
-              <td><%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-success', remote: true%></td>
+              <td>
+              	<%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-success', remote: true%>
+              	<%= link_to "Comments", recipe_comments_path(recipe), :class => 'btn btn-mini btn-warning', remote: true %>
+              </td>
 			  <% if @user == current_user %>
 				 <td><%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %></td>
 			 <% end %>              

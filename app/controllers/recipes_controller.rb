@@ -60,9 +60,14 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = current_user.recipes.find(params[:id])
-    @recipe.update_attributes!(params[:recipe])
-    flash[:success] = "Recipe successfully updated"
-    redirect_to user_path(current_user)
+    respond_to do |format|
+      if @recipe.update_attributes!(params[:recipe])
+        format.html { redirect_to recipes_path, notice: "#{@recipe.title} was updated." }
+        format.js
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy

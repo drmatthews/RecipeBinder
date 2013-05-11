@@ -11,8 +11,7 @@ var form = $('#new_recipe');
   $('<div />').addClass('.errors').html(errors).prependTo("#new_recipe");
 
 <% else %>
-  $('#newRecipeModal').modal('hide');
-  form.find('input:text,textarea').val('');
-  $('<%= escape_javascript(render 'recipes')%>');
+  	form.find('input:text,textarea').val('');
+  	$('<%= escape_javascript(render 'recipes')%>');
 <% end %>
 

@@ -1,5 +1,0 @@
-<li id="<%= feed_item.id %>">
-	<h4><%= feed_item.title %></h4>
-	<%= link_to "Card", recipe_path(feed_item), {:class => 'btn btn-mini btn-primary', :id => 'recipeID'}%>
-	<%= link_to "remove", recipe_path(feed_item), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
-</li>

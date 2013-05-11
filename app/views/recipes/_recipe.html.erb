@@ -5,11 +5,15 @@
 		<%= image_tag('blank.png', size: "200x125") %>
 	<% end %>
 	<h2><%= link_to_unless_current recipe.title, recipe, remote: true %></h2>
-	<div class="description"><%= recipe.description %></div>
-	<% if recipe.tag_list %>
-	<p>
-		Tags: <%= recipe.tag_list %>
-	</p>
-	<% end %>
-	<em>added by <%= link_to recipe.user.name, recipe.user %></em>
+	<div class="description"><%= recipe.description %>
+		<% if recipe.tag_list %>
+			<p>
+				<em>Tags:</em> <%= recipe.tag_list %>
+			</p>
+		<% end %>
+		<em>added by <%= link_to recipe.user.name, recipe.user %></em>
+		<p>
+			<em><%= link_to "#{recipe.comments.count} Comments", recipe_comments_path(recipe), remote: true %></em>
+		</p>
+	</div>
 <% end %>
