@@ -13,10 +13,10 @@ class Recipe < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   
   #if respond_to? :define_index
-    define_index do
-      indexes title
-      indexes tags(:name), :as => :tag_names
-    end
+  #  define_index do
+  #    indexes title
+  #    indexes tags(:name), :as => :tag_names
+  #  end
   #end
 
   def self.tagged_with(name)

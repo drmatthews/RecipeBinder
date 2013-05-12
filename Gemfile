@@ -15,6 +15,8 @@ gem 'compass-rails'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'rack-offline'
+gem 'fog'
+gem 'carrierwave_direct'
 
 group :development, :test do
   gem 'ruby-debug19'
