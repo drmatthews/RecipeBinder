@@ -51,6 +51,7 @@
 					<%= link_to_add_fields "Add step", f, :steps%>
 				</p>
 			</div>
+			<% end %>
 			<div class="tab-pane" id="ImagesTab">
 				<p>
 					<%= f.file_field :image %>
@@ -63,7 +64,6 @@
 			</div>
 		</div>
 	</div>
-	<% end %>
 </div>
 <div class="modal-footer">
 	<a id="modal-form-submit" class='btn btn-primary' href="#">Submit</a>

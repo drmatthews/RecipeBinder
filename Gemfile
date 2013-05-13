@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.12b5'
 gem 'thinking-sphinx'
 gem 'bootstrap-sass', '2.1'
 gem 'bootswatch-rails'
@@ -11,12 +11,14 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
+gem 'jquery-fileupload-rails'
 gem 'compass-rails'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'rack-offline'
 gem 'fog'
 gem 'carrierwave_direct'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'ruby-debug19'
