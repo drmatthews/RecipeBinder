@@ -8,6 +8,7 @@ RecipeApp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :recipes do
     resources :comments
+    resources :pictures
   end
   
   resources :users do

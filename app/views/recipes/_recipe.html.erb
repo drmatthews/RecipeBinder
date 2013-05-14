@@ -1,10 +1,18 @@
 <%= div_for recipe do %>
-	<% if recipe.image?%>
-		<%= image_tag recipe.image_url(:thumb), size: "200x125" %>
-	<% else %>
+	<% if recipe.picture.nil?%>
 		<%= image_tag('blank.png', size: "200x125") %>
+	<% else %>
+		<%= image_tag recipe.picture.image_url(:thumb), size: "200x125" %>
 	<% end %>
-	<h2><%= link_to_unless_current recipe.title, recipe, remote: true %></h2>
+	<h2><%= link_to_unless_current recipe.title, recipe, remote: true %>
+		| <%= link_to "new image", new_recipe_picture_path(recipe), :class => 'btn btn-mini btn-success', :id => 'addPicture', remote: true%>
+        <script id="template-upload" type="text/x-tmpl">
+			<div class="upload">
+  				{%=o.name%}
+  				<div class="progress"><div class="bar" style="width: 0%;"></div></div>
+			</div>
+		</script>		
+	</h2>
 	<div class="description"><%= recipe.description %>
 		<% if recipe.tag_list %>
 			<p>

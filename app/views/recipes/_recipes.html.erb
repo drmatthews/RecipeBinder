@@ -8,14 +8,21 @@
           <% for recipe in @recipes %>
             <div class="recipe">
               <div class="screenshot">
-				<% if recipe.image?%>
-					<%= image_tag recipe.image_url(:thumb), size: "200x125" %>
-				<% else %>
+				<% if recipe.picture.nil?%>
 					<%= image_tag('blank.png', size: "200x125") %>
-				<% end%>              	
+				<% else %>
+					<%= image_tag recipe.picture.image_url(:thumb), size: "200x125" %>
+				<% end %>              	
               </div>
               <div class="name">
                 <%= link_to recipe.title, recipe, remote: true %>
+                | <%= link_to "new image", new_recipe_picture_path(recipe), :class => 'btn btn-mini btn-success', :id => 'addPicture', remote: true %>
+                <script id="template-upload" type="text/x-tmpl">
+					<div class="upload">
+  					{%=o.name%}
+  					<div class="progress"><div class="bar" style="width: 0%;"></div></div>
+					</div>
+				</script>
               </div>
 				<div class="actions">
 					<% if @user == current_user %>
