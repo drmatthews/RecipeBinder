@@ -5,7 +5,7 @@
 	<h4> Create a new recipe! </h4>
 </div>
 <div class="modal-body">
-	<%= form_for @recipe, remote: true do |f| %>
+	<%= form_for @recipe do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="tabbable">
 		<ul class="nav nav-tabs">
@@ -17,9 +17,6 @@
 			</li>
 			<li>
 				<a href="#MethodTab" data-toggle="tab">Method</a>
-			</li>
-			<li>
-				<a href="#ImagesTab" data-toggle="tab">Images</a>
 			</li>
 		</ul>
 		<div class="tab-content">

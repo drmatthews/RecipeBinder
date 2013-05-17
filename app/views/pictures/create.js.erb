@@ -1,17 +1,8 @@
-jQuery(function() {
-  return $('#new_picture').fileupload({
-    dataType: "script",
-    add: function(e, data) {
-      data.context = $(tmpl("template-upload", data.files[0]));
-      $('#new_painting').append(data.context);
-      return data.submit();
-    },
-    progress: function(e, data) {
-      var progress;
-      if (data.context) {
-        progress = parseInt(data.loaded / data.total * 100, 10);
-        return data.context.find('.bar').css('width', progress + '%');
-      }
-    }
-  });
-});
+<% if @picture.new_record? %>
+  alert("Failed to upload picture: <%= j @picture.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+	$('#recipe_<%= @recipe.id %> #image').replaceWith('<%= j image_tag( @recipe.picture.file_url(:thumb), size: "200x125", :id => 'image')%>');
+	$('#fileupload').hide();
+	$('#recipe_<%= @recipe.id %> .description').show();
+	$('#recipe_<%= @recipe.id %> .name').show();
+<% end %>

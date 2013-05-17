@@ -1,8 +1,8 @@
-<%= form_for [@recipe,@picture], remote: true do |f| %>
-	<p>
-		<%= f.file_field :image %>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
-<% end %>
+<div id="fileupload">
+	<%= form_for [@recipe,@picture], remote: true do |f| %>
+		<p>
+			<%= f.label :file, "Upload new image for recipe"%>
+			<%= f.file_field :file %>
+		</p>
+	<% end %>
+</div>

@@ -2,9 +2,15 @@ class PicturesController < ApplicationController
   before_filter :signed_in_user
   before_filter :load_recipe
   
+  def index
+    @pictures = Picture.all
+  end
+  
   def new
-    recipe = Recipe.find(params[:recipe_id])
-    @picture = recipe.build_picture
+    @view = params[:view]
+    session[:view] = @view
+    @recipe = Recipe.find(params[:recipe_id])
+    @picture = @recipe.build_picture
     respond_to do |format|
       format.html
       format.js
@@ -12,14 +18,15 @@ class PicturesController < ApplicationController
   end
 
   def create
+    @view = session[:view]
+    @recipe = Recipe.find(params[:recipe_id])
     @picture = @recipe.build_picture(params[:picture])
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to recipes_path }
         format.js
+        format.html { redirect_to recipes_path, notice: "Image was uploaded."  }
       else
         format.html { render :new }
-        format.js
       end
     end     
   end

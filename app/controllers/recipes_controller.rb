@@ -4,7 +4,6 @@ class RecipesController < ApplicationController
   
   def index
     #@recipes = Recipe.paginate(:page => params[:page], :per_page => 15)
-    #debugger
     @tag = Tag.find_by_name(params[:tag]) if params[:tag]
     if params[:search].blank?    
       @recipes = (@tag ? @tag.recipes : Recipe).all
@@ -27,7 +26,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = current_user.recipes.build(params[:recipe])
-   
     if @recipe.save
       flash[:success] = "New recipe added"
       respond_with(@recipe, :location => recipes_path)
