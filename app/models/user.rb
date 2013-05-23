@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, unless: Proc.new { |user| user.password.nil? }
 
   def feed
-    # This is preliminary. See "Following users" for the full implementation.
     Recipe.where("user_id = ?", id)
   end
 

@@ -1,8 +1,6 @@
 <% if @picture.new_record? %>
   alert("Failed to upload picture: <%= j @picture.errors.full_messages.join(', ').html_safe %>");
 <% else %>
-	$('#recipe_<%= @recipe.id %> #image').replaceWith('<%= j image_tag( @recipe.picture.file_url(:thumb), size: "200x125", :id => 'image')%>');
+	$('#recipe_<%= @recipe.id %> #image').replaceWith('<%= j image_tag( @recipe.picture.file_url(:med), size: "50x31", :id => 'image')%>');
 	$('#fileupload').hide();
-	$('#recipe_<%= @recipe.id %> .description').show();
-	$('#recipe_<%= @recipe.id %> .name').show();
 <% end %>

@@ -1,21 +1,23 @@
 <div id="recipes">
-	<% if @feed_items.any? %>
-		<table class="table table-striped">
-          <tr>
-            <th>Name</th>
-            <th>Added by</th>
-            <th>Actions</th>
-          </tr>
-          <% for recipe in @feed_items %>
-            <tr>
-              <td><%= recipe.title %></td>
-              <td><%= recipe.user.name %></td>
-              <td><%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-success', remote: true%>
-				  <%= link_to "Comments", recipe_comments_path(recipe), :class => 'btn btn-mini btn-warning', remote: true %>              	
-			  <%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %></td>              
-            </tr>
-          <% end %>
-        </table>
-	<%= will_paginate @feed_items %>
+	<script id="template-upload" type="text/x-tmpl">
+		<div class="upload">
+  			{%=o.name%}
+  			<div class="progress"><div class="bar" style="width: 0%;"></div></div>
+		</div>
+	</script>
+	<% if @feed_items.any? %>	
+		<%= div_for @feed_items do |recipe| %>
+			<h4><%= recipe.title %></h4>
+			<% if recipe.picture.nil?%>
+				<%= image_tag('blank.png', size: "50x31", :id => 'image')%>
+			<% else %>
+				<%= image_tag(recipe.picture.file_url(:med), size: "50x31", :id => 'image') unless recipe.picture.nil?%>
+			<% end %>	
+			<%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-success', remote: true%>
+			<%= link_to "Comments", recipe_comments_path(recipe), :class => 'btn btn-mini btn-warning', remote: true %>              	
+			<%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %>
+			<%= link_to "Photo", new_recipe_picture_path(recipe), :class => 'btn btn-mini btn-success', remote: true%>			
+		<% end %>
+		<%= will_paginate @feed_items %>
 	<% end %>
 </div>

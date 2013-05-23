@@ -1,10 +1,5 @@
 <div id="recipes">
-	<script id="template-upload" type="text/x-tmpl">
-		<div class="upload">
-  			{%=o.name%}
-  			<div class="progress"><div class="bar" style="width: 0%;"></div></div>
-		</div>
-	</script>
+
 <% if params[:view].nil? %>
 	<div class="full">
 		<%= render @recipes%>
@@ -14,18 +9,10 @@
           <% for recipe in @recipes %>
             <%= div_for recipe do %>
 	        	<div class="screenshot">
-              	<% if recipe.user.name == current_user.name %>
-					<% if recipe.picture.nil?%>
-						<%= link_to_unless_current(image_tag('blank.png', size: "200x125", :id => 'image'), new_recipe_picture_path(recipe, {:view => params[:view]}), :id => 'addPicture', remote: true) %>
-					<% else %>
-						<%= link_to_unless_current(image_tag(recipe.picture.file_url(:thumb), size: "200x125", :id => 'image'), new_recipe_picture_path(recipe,{:view => params[:view]}), :id => 'addPicture', remote: true) %>
-					<% end %>              	
-				<%else%>
-					<% if recipe.picture.nil?%>
-						<%= image_tag('blank.png', size: "200x125") %>
-					<% else %>
-						<%= image_tag(recipe.picture.file_url(:thumb), size: "200x125", :id => 'image') %>
-					<% end %>              	
+				<% if recipe.picture.nil?%>
+					<%= image_tag('blank.png', size: "200x125") %>
+				<% else %>
+					<%= image_tag(recipe.picture.file_url(:med), size: "200x125", :id => 'image') %>
 				<%end%>
 				<div class="name">
                 	<%= link_to recipe.title, recipe, remote: true %>
