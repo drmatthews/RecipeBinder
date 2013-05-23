@@ -10,7 +10,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
-gem 'jquery-rails', '2.0.2'
+gem 'jquery-rails', '2.2.1'
 gem 'compass-rails'
 gem 'carrierwave'
 gem 'rmagick'
@@ -45,6 +45,6 @@ group :test do
   # gem 'growl', '1.0.3'
 end
 
-#group :production do
-#  gem 'pg', '0.12.2'
-#end
+group :production do
+  gem 'pg'
+end
