@@ -7,10 +7,10 @@ class Recipe < ActiveRecord::Base
   has_many :tags, through: :taggings, dependent: :destroy
   has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :ingredients, :steps, :reject_if => lambda { |a| a[:content].blank?},:allow_destroy => true
-  validates :user_id, :tag_list, :description, :title, presence: true
+  validates :cookingtime,:preptime,:cookingtimeunits,:preptimeunits,:user_id, :tag_list, :description, :title, presence: true
   validates_associated :ingredients, :steps
   
-  attr_accessible :category, :tag_list, :description, :title, :ingredients_attributes, :steps_attributes, :file
+  attr_accessible :cookingtime,:preptime,:cookingtimeunits,:preptimeunits,:category, :tag_list, :description, :title, :ingredients_attributes, :steps_attributes, :file
   
   #if respond_to? :define_index
   #  define_index do

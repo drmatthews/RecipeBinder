@@ -4,6 +4,8 @@
 </div>
 <div class="modal-body">
 	<section>
+		<p>Preparation time: <%= @recipe.preptime %> <%= @recipe.preptimeunits %></p>
+		<p>Cooking time: <%= @recipe.cookingtime %> <%= @recipe.cookingtimeunits %></p>
 		<h4>Ingredients</h4>
 		<%= form_tag addto_items_path(@user), method: :put, remote: true do %>
 		<table id="ingredients">

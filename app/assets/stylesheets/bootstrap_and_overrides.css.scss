@@ -378,3 +378,14 @@ input {
   color: white;
 }
 
+#preptime, #cookingtime {
+  display: inline-block;
+  select {
+    width: 30%;
+    padding: 2px;
+  }
+  input {
+    width: 20%;
+  }
+}
+

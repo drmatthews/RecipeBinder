@@ -30,6 +30,20 @@
 
 					<%= f.label :tag_list, "Tags (comma separated)" %>
 					<%= f.text_field :tag_list %>
+					
+					<div id="preptime">
+						<%= f.label :preptime, "Preparation time" %>
+						<%= f.text_field :preptime %>
+					
+						<%= f.select(:preptimeunits,options_for_select([['Hours', "hours"], ['minutes', "minutes"]], "minutes")) %>
+					</div>
+					
+					<div id="cookingtime">
+						<%= f.label :cookingtime, "Cooking time" %>
+						<%= f.text_field :cookingtime %>
+						
+						<%= f.select(:cookingtimeunits,options_for_select([['Hours', "hours"], ['minutes', "minutes"]], "minutes")) %>
+					</div>
 				</p>
 			</div>
 			<div class="tab-pane" id="IngredientsTab">
