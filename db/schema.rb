@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527082638) do
+ActiveRecord::Schema.define(:version => 20130527114040) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20130527082638) do
     t.text     "description"
     t.integer  "cookingtime"
     t.integer  "preptime"
-    t.string   "cookingtimeunits"
-    t.string   "preptimeunits"
+    t.integer  "preptimeunits"
+    t.integer  "cookingtimeunits"
   end
 
   create_table "relationships", :force => true do |t|
