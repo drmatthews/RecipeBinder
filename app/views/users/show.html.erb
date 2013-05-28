@@ -8,12 +8,6 @@
 		  			<%= gravatar_side_for current_user %>
 		  			<%= current_user.name %> 
 				</h3>
-				<% if current_user %>
-		  			<%= render 'users/follow_form' if signed_in? %>
-		 			<section>
-						<%= render 'shared/stats' %>
-					</section>
-				<% end %>
 			</aside>
 			<div class="span7">
 				<section>

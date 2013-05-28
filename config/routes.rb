@@ -11,11 +11,7 @@ RecipeApp::Application.routes.draw do
     resources :pictures
   end
   
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
+  resources :users, except: [:index]
   resources :items do
     collection do
       put :addto
