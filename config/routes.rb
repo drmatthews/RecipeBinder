@@ -24,7 +24,7 @@ RecipeApp::Application.routes.draw do
   
   resources :password_resets
   
-  match '/signup',  to: 'users#new'
+  #match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
