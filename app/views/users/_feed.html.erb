@@ -8,10 +8,12 @@
 	<% if @feed_items.any? %>	
 		<%= div_for @feed_items do |recipe| %>
 			<h4><%= recipe.title %></h4>
-			<% if recipe.picture.nil?%>
-				<%= image_tag('blank.png', size: "50x31", :id => 'image')%>
-			<% else %>
-				<%= image_tag(recipe.picture.file_url(:med), size: "50x31", :id => 'image') unless recipe.picture.nil?%>
+			<% if !mobile_device? %>
+				<% if recipe.picture.nil?%>
+					<%= image_tag('blank.png', size: "50x31", :id => 'image')%>
+				<% else %>
+					<%= image_tag(recipe.picture.file_url(:med), size: "50x31", :id => 'image') %>
+				<% end %>
 			<% end %>	
 			<%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-success', remote: true%>
 			<%= link_to "Comments", recipe_comments_path(recipe), :class => 'btn btn-mini btn-warning', remote: true %>              	
