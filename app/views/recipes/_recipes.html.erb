@@ -1,4 +1,7 @@
 <div id="recipes">
+<% if mobile_device? %>
+  <% params.merge(:view => "grid", :page => nil) %>
+<% end %>
 
 <% if params[:view].nil? %>
 	<div class="full">
