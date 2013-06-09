@@ -23,33 +23,37 @@
 		<%= render "recipes" %>
 		<%= will_paginate @recipes %>
 	</div>
-	<aside class="span2">
-		<h4 id="views">
+	<% if !mobile_device? %>
+		<aside class="span2">
+			<h4 id="views">
 			<div class="btn-group">
-				<button class='btn btn-primary' id="views" disabled="disabled">View:</button>
+				<button class='btn btn-primary' id="views" disabled="disabled">
+					View:
+				</button>
 				<%= link_to params.merge(:view => nil, :page => nil), :title => "Full View", :class => 'btn btn-primary' do %>
 					<i class="icon-th-list icon-white"></i>
 				<% end %>
 				<%= link_to params.merge(:view => "list", :page => nil), :title => "List View", :class => 'btn btn-primary' do%>
 					<i class="icon-align-justify icon-white"></i>
-				<% end %>				
+				<% end %>
 				<%= link_to params.merge(:view => "grid", :page => nil), :title => "Grid View", :class => 'btn btn-primary' do%>
 					<i class="icon-th-large icon-white"></i>
-				<% end %>				
-			</div>
-		</h4>			
-		<section>
-			<% unless @all_tags.nil?%>
-		  		<div class="categories">
-		  			<h2>Categories</h2>
-		  	  		<ul>
-		    			<% @all_tags.each do |tag| %>
+				<% end %>
+			</div></h4>
+			<section>
+				<% unless @all_tags.nil?%>
+				<div class="categories">
+					<h2>Categories</h2>
+					<ul>
+						<% @all_tags.each do |tag| %>
 							<li><%= link_to tag, tag_path(tag)%></li>
-		    			<% end %>
-		      		</ul>
-		  		</div>
-		  	<% end %>
-		</section>
-		
-	</aside>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+			</section>
+		</aside>
+	<% else %>
+		<% params.merge(:view => "grid", :page => nil) %>
+	<% end %>
 </div>
