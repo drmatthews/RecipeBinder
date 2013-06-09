@@ -15,9 +15,16 @@
 						<%= render 'feed' %>
 				</section>
 				<section id="newRecipeSection">
-					<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %>
-					<%= link_to "All recipes", recipes_path, :class => "btn btn-primary" %>
-					<%= link_to "Shopping List", items_path, :class => "btn btn-primary", :id => "shoppingList", remote: true %>
+					<% if mobile_device? %>
+						<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-mini btn-primary", remote: true %>
+						<%= link_to "All recipes", recipes_path, :class => "btn btn-mini btn-primary" %>
+						<%= link_to "Shopping List", items_path, :class => "btn btn-mini btn-primary", :id => "shoppingList", remote: true %>
+					<% else %>
+						<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %>
+						<%= link_to "All recipes", recipes_path, :class => "btn btn-primary" %>
+						<%= link_to "Shopping List", items_path, :class => "btn btn-primary", :id => "shoppingList", remote: true %>
+					
+					<% end %>
 				</section>
 			</div>
 		</div>

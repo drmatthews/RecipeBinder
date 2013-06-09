@@ -15,10 +15,17 @@
 		</div>
 		<% end %>
 		<span id="newRecipeSection">
-			<p>
-				<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %>
-				<%= link_to "Shopping List", items_path, :class => "btn btn-primary", :id => "shoppingList", remote: true %>
-			</p>
+			<% if mobile_device? %>
+				<p>
+					<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-mini btn-primary", remote: true %>
+					<%= link_to "Shopping List", items_path, :id => "shoppingList", :class => "btn btn-mini btn-primary", remote: true %>
+				</p>
+			<% else %>
+				<p>
+					<%= link_to "New Recipe!", new_recipe_path, :id => "newRecipeBtn", :class => "btn btn-primary", remote: true %>
+					<%= link_to "Shopping List", items_path, :id => "shoppingList", :class => "btn btn-primary", remote: true %>
+				</p>			
+			<% end %>
 		</span>		
 		<%= render "recipes" %>
 		<%= will_paginate @recipes %>
