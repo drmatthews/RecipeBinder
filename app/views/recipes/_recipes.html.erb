@@ -1,51 +1,65 @@
 <div id="recipes">
-<% if mobile_device? %>
-  <% params.merge(:view => "grid", :page => nil) %>
-<% end %>
-
-<% if params[:view].nil? %>
-	<div class="full">
-		<%= render @recipes%>
-	</div>
-<% elsif params[:view] == 'grid'%>
-	<div class="grid">
-          <% for recipe in @recipes %>
-            <%= div_for recipe do %>
-	        	<div class="screenshot">
-				<% if recipe.picture.nil?%>
-					<%= image_tag('blank.png', size: "200x125") %>
-				<% else %>
-					<%= image_tag(recipe.picture.file_url(:med), size: "200x125", :id => 'image') %>
-				<%end%>
-				<div class="name">
-                	<%= link_to recipe.title, recipe, remote: true %>
-              	</div> 
-              </div>          
-            <%end%>
-          <% end %>
-          <div class="clear"></div>		
-	</div>
-	<% elsif params[:view] == 'list'%>
-		<table class="table table-striped">
-          <tr>
-            <th>Name</th>
-            <th>Added by</th>
-            <th></th>
-            <th></th>
-          </tr>
-          <% for recipe in @recipes %>
-            <tr>
-              <td><%= recipe.title %></td>
-              <td><%= recipe.user.name %></td>
-              <td>
-              	<%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-success', remote: true%>
-              	<%= link_to "Comments", recipe_comments_path(recipe), :class => 'btn btn-mini btn-warning', remote: true %>
-              </td>
-			  <% if recipe.user.name == current_user.name %>
-				 <td><%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %></td>
-			 <% end %>              
-            </tr>
-          <% end %>
-        </table>
-<% end %>
+	<% if !mobile_device? %>
+		<% if params[:view].nil? %>
+			<div class="full">
+				<%= render @recipes%>
+			</div>
+		<% elsif params[:view] == 'grid'%>
+			<div class="grid">
+          		<% for recipe in @recipes %>
+            		<%= div_for recipe do %>
+	        			<div class="screenshot">
+						<% if recipe.picture.nil?%>
+							<%= image_tag('blank.png', size: "200x125") %>
+						<% else %>
+							<%= image_tag(recipe.picture.file_url(:med), size: "200x125", :id => 'image') %>
+						<%end%>
+						<div class="name">
+                			<%= link_to recipe.title, recipe, remote: true %>
+              			</div> 
+              			</div>          
+            		<%end%>
+				<% end %>
+    			<div class="clear"></div>		
+			</div>
+		<% elsif params[:view] == 'list'%>
+			<table class="table table-striped">
+          	<tr>
+            	<th>Name</th>
+            	<th>Added by</th>
+            	<th></th>
+            	<th></th>
+          	</tr>
+          	<% for recipe in @recipes %>
+ 	           <tr>
+    	          <td><%= recipe.title %></td>
+        	      <td><%= recipe.user.name %></td>
+            	  <td>
+              		<%= link_to "Details", recipe_path(recipe), :class => 'btn btn-mini btn-success', remote: true%>
+              		<%= link_to "Comments", recipe_comments_path(recipe), :class => 'btn btn-mini btn-warning', remote: true %>
+              	  </td>
+			  	  <% if recipe.user.name == current_user.name %>
+				 	<td><%= link_to "remove", recipe_path(recipe), {:id => 'removeRecipe',:class => 'btn btn-mini btn-danger',:confirm => 'Are you sure?', :method => :delete} %></td>
+			 	  <% end %>              
+            	</tr>
+          	<% end %>
+	        </table>
+		<% end %>
+	<% else %>
+		<div class="grid">
+        	<% for recipe in @recipes %>
+           		<%= div_for recipe do %>
+	       			<div class="screenshot">
+						<% if recipe.picture.nil?%>
+							<%= image_tag('blank.png', size: "200x125") %>
+						<% else %>
+							<%= image_tag(recipe.picture.file_url(:med), size: "200x125", :id => 'image') %>
+						<%end%>
+						<div class="name"><%= link_to recipe.title, recipe, remote: true %></div> 
+        			</div>          
+            	<%end%>
+			<% end %>
+    		<div class="clear"></div>		
+		</div>	
+	<% end %>
 </div>
