@@ -11,7 +11,7 @@ RecipeApp::Application.routes.draw do
     resources :pictures
   end
   
-  resources :users, except: [:index]
+  resources :users#, except: [:index]
   resources :items do
     collection do
       put :addto
