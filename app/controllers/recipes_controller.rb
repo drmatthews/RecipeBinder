@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
     if params[:search].blank?    
       @recipes = (@tag ? @tag.recipes : Recipe).all
     else
-      @recipes = Recipe.search(params[:search])
+      @recipes = Recipe.text_search(params[:search])
     end
     #debugger
     @all_tags = Recipe.all_tags

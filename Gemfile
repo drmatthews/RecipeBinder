@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'mysql2', '~> 0.3.12b5'
-gem 'thinking-sphinx'
+gem 'pg'
+gem 'pg_search'
 gem 'bootstrap-sass', '2.1'
 gem 'bootswatch-rails'
 gem 'sass-rails',   '3.2.5'

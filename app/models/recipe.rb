@@ -11,13 +11,25 @@ class Recipe < ActiveRecord::Base
   validates_associated :ingredients, :steps
   
   attr_accessible :cookingtime,:preptime,:cookingtimeunits,:preptimeunits,:category, :tag_list, :description, :title, :ingredients_attributes, :steps_attributes, :file
-  
+
+  include PgSearch
+  pg_search_scope :search, against: [:title],
+  using: {tsearch: {dictionary: "english"}},
+  associated_against: {tags: :name, ingredients: :content}
   #if respond_to? :define_index
   #  define_index do
   #    indexes title
   #    indexes tags(:name), :as => :tag_names
   #  end
   #end
+
+  def self.text_search(query)
+    if query.present?
+      search(query)
+    else
+      scoped
+    end
+  end
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).recipes
