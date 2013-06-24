@@ -378,10 +378,21 @@ input {
   color: white;
 }
 
+#recipe_dialog {
+  padding-left: 30px;
+  input, textarea {
+    width: 95%;
+  }  
+}
+
+#modal-form-submit {
+  background-color: #016254;
+  color: white;
+}
+
 #preptime, #cookingtime {
-  display: inline-block;
   select {
-    width: 30%;
+    width: 25%;
     padding: 2px;
   }
   input {
