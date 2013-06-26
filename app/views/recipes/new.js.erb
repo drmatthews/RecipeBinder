@@ -1,4 +1,4 @@
-var recipe_form = $('<%= j(render(:partial => "form"))%>');
+var recipe_form = $('<%= j render("form")%>');
 
 $('#newRecipeModal').html(recipe_form).modal('show');
 

@@ -3,11 +3,10 @@ RB = {
         $('<div id="recipeInfo" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));   
-        $('#recipes #recipeID').button().click(RB.getRecipeInfo);
         $('<div id="editrecipeInfo" class="modal hide fade"></div>').
             hide().
             appendTo($('body'));
-        $('<div id="newRecipeModal" class="modal hide fade"></div>').
+        $('<div id="newRecipeModal" class="modal hide fade" tabindex="-1" data-width="760"></div>').
             hide().
             appendTo($('body'));
         $('<div id="list" class="modal hide fade"></div>').
