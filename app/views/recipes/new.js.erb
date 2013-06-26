@@ -1,3 +1,22 @@
-var recipe_form = $('<%= j render("mobileform") %>');
-$(".ui-dialog-titlebar").hide();
-$('#recipe_dialog').html(recipe_form).dialog('open');
+var recipe_form = $('<%= j render("form")%>');
+
+$('#newRecipeModal').modal('show');
+
+$('#new_recipe').on('click', '.remove_fields', function(event) {
+  $(this).prev('input[type=hidden]').val('1');
+  $(this).closest('fieldset').hide();
+  return event.preventDefault();
+});
+
+$('#new_recipe').on('click', '.add_fields', function(event) {
+  var regexp, time;
+  time = new Date().getTime();
+  regexp = new RegExp($(this).data('id'), 'g');
+  $(this).before($(this).data('fields').replace(regexp, time));
+  return event.preventDefault();
+});
+
+$('#modal-form-submit').on('click', function(e){
+    e.preventDefault();
+    $('#new_recipe').submit();
+    });
