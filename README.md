@@ -7,5 +7,5 @@ It uses the following technologies:
 2. JavaScript (JQuery) 
 3. erb templates (including js.erb)
 4. postgreSQL for full text searching
-5. twitter-bootstrap for view styling views
+5. twitter-bootstrap for view styling
 6. carrier wave for uploading pictures to amazon s3
